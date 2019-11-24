@@ -1,0 +1,13 @@
+{% extends "mobile/base.html" %}
+{% block header %}
+  <div class='jumbotron'>
+    <h1>MobileService</h1>
+  </div>
+{% endblock header %}
+{% block content %}
+  <h2>
+    <a href="{% url 'users:register' %}">Register an account</a> to make
+    your own database.
+  </h2>
+{% endblock content %}
+

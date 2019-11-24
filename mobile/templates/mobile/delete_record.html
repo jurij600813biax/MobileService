@@ -1,0 +1,82 @@
+{% extends "mobile/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Стереть запись</h2>
+{% endblock header %}
+{% block content %}
+  <form action="{% url 'mobile:delete_record' mobil.id %}" method='post'>
+    {% csrf_token %}
+   <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.number_reg %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.number_sticker %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.model_tel %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.model_1_tel %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.imei %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.kod_tel %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.defect_tel %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.defect %}
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+        {% bootstrap_field form.price %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.state %}
+      </div>
+      <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+        {% bootstrap_field form.status %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.number_tel %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.date_end %}
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        {% bootstrap_field form.date_take_away %}
+      </div>
+      <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+          {% bootstrap_field form.comment %}
+      </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 ">
+            <h3></h3>
+        </div>
+    </div>
+    </div>
+    {% buttons %}
+       <div class="row">
+          <div class="col-sm-offset-10 ">
+            <button name="submit" class="btn btn-primary">delete</button>
+            <a href="{% url 'mobile:telephones' %}" class="btn btn-danger" >
+		    отменить</a>
+          </div>
+       </div>
+    {% endbuttons %}
+  </form>
+
+{% endblock content %}
+

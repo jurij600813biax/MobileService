@@ -1,0 +1,65 @@
+{% extends "mobile/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Результат поиска</h2>
+{% endblock header %}
+{% block content %}
+  {%if object_list %}
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr class="info">
+          <th style="width:8%">Регистр</th>
+          <th style="width:4%">Стикер</th>
+          <th colspan="2">Модель телефона</th>
+          <th style="width:12%">imei</th>
+          <th style="width:16%">Неисправность</th>
+          <th style="width:8%">Статус</th>
+          <th style="width:8">Телефон</th>
+          <th style="width:9%">date_added</th>
+          <th style="width:4%"></th>
+          <th style="width:5%"></th>
+          <th style="width:7%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mobil in object_list %}
+        <tr>
+          <td>{{mobil.number_reg}}</td>
+          <td>{{mobil.number_sticker}}</td>
+          {% if mobil.model_tel == "------->" %}
+            <td></td>
+          {% else %}
+            <td>{{mobil.model_tel}}</td>
+          {% endif %}
+          <td>{{mobil.model_1_tel}}</td>
+          <td>{{mobil.imei}}</td>
+          {% if mobil.defect == "*" %}
+            <td>{{mobil.defect_tel}}</td>
+          {% elif mobil.defect == "***" %}
+            <td>{{mobil.defect_tel}}</td>
+          {% elif mobil.defect_tel == "------->" %}
+            <td>{{mobil.defect}}</td>
+          {% else %}
+            <td>{{mobil.defect_tel}} , {{mobil.defect}}</td>
+          {% endif %}
+          <td>{{mobil.status}}</td>
+          <td>{{mobil.number_tel}}</td>
+          <td>{{mobil.date_added|date:'M d, Y '}}</td>
+          <td><a href="{% url 'mobile:edit_record' mobil.id %}" class="btn btn-warning">edit</a></td>
+          <td><a href="{% url 'mobile:delete_record' mobil.id %}" class="btn btn-danger">delete</a></td>
+          <td><a href="{% url 'mobile:telephones' %}" class="btn btn-warning">отменить</a></td>
+        </tr>
+        {% endfor %}
+        {%else%}
+          <p><h2>список пуст</h2></p>
+          <div class="row">
+            <div class="col-sm-offset-11 ">
+              <a href="{% url 'mobile:telephones' %}" class="btn btn-danger" >
+                 отменить</a>
+            </div>
+          </div>
+        </tbody>
+  {%endif%}
+{% endblock content %}
+
+
