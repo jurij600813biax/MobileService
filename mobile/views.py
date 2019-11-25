@@ -68,22 +68,22 @@ def delete_record(request,mobil_id):
     context = {'form': form, 'mobil': mobil}
     return render( request, 'mobile/delete_record.html',context)
 
-class SearchResultsView(ListView):
-    model = Mobil
-    template_name = 'mobile/search_results.html'
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        print(query)
-        print(Mobil.owner)
-        if query:
-            object_list =Mobil.objects.filter(
-                Q(model_tel__exact=query) | Q(imei__exact=query) | Q(number_tel__exact=query) |
-                Q(model_1_tel__exact=query) | Q(number_sticker__exact=query) | Q(comment__exact=query)
-                | Q(number_reg__exact=query) | Q(number_reg__exact=query)
+@login_required
+def search_results(request):
+    query = request.GET.get('q')
+    if query:
+        eto = Mobil.objects.filter(owner=request.user)
+        object_list =eto.filter(
+            Q(model_tel__exact=query) | Q(imei__exact=query) | Q(number_tel__exact=query) |
+            Q(model_1_tel__exact=query) | Q(number_sticker__exact=query) | Q(comment__exact=query)
+            | Q(number_reg__icontains=query)
                 )
-        else:
-            object_list=[]
-        return object_list
+        context = {'object_list': object_list}
+    else:
+        context = {'object_list': []}
+    return render(request, 'mobile/search_results.html', context)
+
+
             
 
     
