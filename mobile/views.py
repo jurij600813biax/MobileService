@@ -75,9 +75,10 @@ def search_results(request):
         eto = Mobil.objects.filter(owner=request.user)
         object_list =eto.filter(
             Q(model_tel__exact=query) | Q(imei__exact=query) | Q(number_tel__exact=query) |
-            Q(model_1_tel__exact=query) | Q(number_sticker__exact=query) | Q(comment__exact=query)
-            | Q(number_reg__icontains=query)
-                )
+            Q(model_1_tel__exact=query) | Q(number_sticker__exact=query) | Q(comment__icontains=query)
+            | Q(number_reg__icontains=query) | Q(defect_tel__icontains=query) | Q(defect__icontains=query)
+            | Q(status__exact=query)
+                ).order_by('-number_reg')
         context = {'object_list': object_list}
     else:
         context = {'object_list': []}
