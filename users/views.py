@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import UserCreationForm
+from mobile.models import Mobil
+
 
 def logout_view(request):
     """Завершает сеанс работы с приложением."""
@@ -23,4 +25,11 @@ def register(request):
             return HttpResponseRedirect(reverse('mobile:index'))
     context = {'form': form}
     return render(request, 'users/register.html', context)
+
+ 
+def individual(request):
+    """Индивидуальные настройки"""
+    mobils = Mobil.objects.all()
+    context = {'mobils':mobils }
+    return render(request, 'users/individual.html',context)
 
