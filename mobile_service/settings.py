@@ -143,14 +143,23 @@ if os.getcwd() == '/app':
     # Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    # Разрешены все заголовки хостов.
-    ALLOWED_HOSTS = ['*']
+    # Хостом проекта может быть только Heroku.
+    ALLOWED_HOSTS = ['mobile-service.herokuapp.com']
+    DEBUG = False
 
     # Конфигурация статических ресурсов
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
+    
+#    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+#    STATIC_ROOT = 'staticfiles'
+#    STATICFILES_DIRS = (
+#        os.path.join(BASE_DIR, 'static'),
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
     )
+    
 
 
