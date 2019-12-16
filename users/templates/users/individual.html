@@ -1,10 +1,32 @@
 {% extends "mobile/base.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>individual</h2>
+  <h2>Individual</h2>
 {% endblock header %}
 {% block content %}
-  {% for mobil in mobils %}
-    {{mobil.model_tel}}
-  {% endfor%}
+<div class="container">
+  <div class="row">
+     <div class="col-xs-12 col-sm-3">
+       <ul class="rounded">
+           <li><a href="{% url 'users:service_prices' %}"><h3>Цены на услуги</h3></a></li>
+           <li><a href="{% url 'mobile:telephones' %}"><h3>Телефоны</h3></a></li>
+           <li><a href="{% url 'users:details' %}"><h3>Детали</h3></a></li>
+           <li><a href="{% url 'users:handbook' %}"><h3>Справочная информация</h3></a></li>
+           <li><a href="{% url 'users:settings' %}"><h3>Настройки</h3></a></li>
+       </ul>
+     </div>
+       
+     <div class="col-xs-12 col-sm-3">
+<!--       <p><a name="p1"></a></p> -->
+       
+
+       
+ <!--      <p><a name="p2"></a></p> -->
+       {% if p2 %}
+       <p>222</p>
+       {% endif %}
+     </div>
+     
+</div>
+
 {% endblock content %}
