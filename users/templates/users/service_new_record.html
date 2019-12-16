@@ -1,0 +1,63 @@
+{% extends "mobile/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+<h2>Service prices</h2>
+<h4>новая запись</h4>
+{% endblock header %}
+{% block content %}
+  <form action="{% url 'users:service_new_record' %}" method='post'  class="form" autocomplete="off">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model %}
+        </div>
+        <div class ="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model_1 %}
+        </div>
+      </div>
+      <div class ="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.battery_type %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.battery_replacement %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.LCD_SP %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.LCD_orig %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.LCD_HQ %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.charging %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.record_1 %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.record_2 %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.record_3 %}
+        </div>
+      </div>
+    {% buttons %}
+       <div class="row">
+          <div class="col-sm-offset-10 ">
+            <button name="submit" class="btn btn-primary">добавить</button>
+            <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
+		    отменить</a>
+          </div>
+        </div>
+      {% endbuttons %}
+    </form>
+{% endblock content %}
