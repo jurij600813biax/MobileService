@@ -1,0 +1,44 @@
+{% extends "mobile/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Details</h2><h4>новая запись</h4>
+{% endblock header %}
+{% block content %}
+  <form action="{% url 'users:details_new_record' %}" method='post'  class="form" autocomplete="off">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model %}
+        </div>
+        <div class ="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model_1 %}
+        </div>
+      </div>
+      <div class ="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_detail %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_quality %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_comment %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_price %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_quantity %}
+        </div>
+      </div>
+    {% buttons %}
+       <div class="row">
+          <div class="col-sm-offset-10 ">
+            <button name="submit" class="btn btn-primary">добавить</button>
+            <a href="{% url 'users:details' %}" class="btn btn-danger" >
+		    отменить</a>
+          </div>
+        </div>
+      {% endbuttons %}
+    </form>
+{% endblock content %}

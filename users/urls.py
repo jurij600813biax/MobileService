@@ -13,6 +13,10 @@ urlpatterns=[
     path('service_edit/<int:price_id>/', views.service_edit, name = 'service_edit'),
     path('service_delete/<int:price_id>/', views.service_delete, name= 'service_delete'),
     path('details/', views.details, name= 'details'),
+    path('details_new_record/', views.details_new_record, name= 'details_new_record'),
+    path('details_search', views.details_search, name= 'details_search'),
+    path('details_edit/<int:detail_id>/', views.details_edit, name= 'details_edit'),
+    path('details_delete/<int:detail_id>/', views.details_delete, name= 'details_delete'),
     path('handbook/', views.handbook, name= 'handbook'),
     path('settings/', views.settings, name= 'settings'),
 ]
