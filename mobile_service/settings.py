@@ -15,6 +15,15 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+STATIC_URL = '/static/'
+
+# Where to take the files from
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+
+# Where you want Django to put your static files
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets2')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -25,8 +34,7 @@ SECRET_KEY = 'fjkqt+#-*md9vq*d2&a!8*i*0z6h%cti0399*ko7wvmo9ti&i2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -75,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mobile_service.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -85,7 +92,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -158,8 +164,8 @@ if os.getcwd() == '/app':
 #    STATICFILES_DIRS = (
 #        os.path.join(BASE_DIR, 'static'),
     STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'assets'),
     )
-    
+
 
 
