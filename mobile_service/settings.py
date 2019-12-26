@@ -23,7 +23,15 @@ STATICFILES_DIRS = (
 )
 
 # Where you want Django to put your static files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets2')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+STATICFILES_FINDERS = (
+    "compressor.finders.CompressorFinder",
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -51,6 +59,7 @@ INSTALLED_APPS = [
     # мои приложения
     'mobile',
     'users',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -166,6 +175,7 @@ if os.getcwd() == '/app':
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
     )
+
 
 
 

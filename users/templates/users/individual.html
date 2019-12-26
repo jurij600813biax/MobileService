@@ -4,6 +4,13 @@
   <h2>Individual</h2>
 {% endblock header %}
 {% block content %}
+
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
+
+{% endcompress %}
+
 <div class="container">
   <div class="row">
      <div class="col-xs-12 col-sm-3">
