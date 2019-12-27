@@ -1,50 +1,132 @@
 {% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MobileService</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-  </head>
-  <body>
+    {% load static %}
+</head>
+
+<body>
     <!-- Статическая навигационная панель -->
     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed"
-            data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar">
-          </button>
-          <a class="navbar-brand" href="{% url 'mobile:index' %}">
-              MobileService</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-<!--          <ul class="nav navbar-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                </button>
+                <a class="navbar-brand" href="{% url 'mobile:index' %}">
+                    MobileService</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <!--          <ul class="nav navbar-nav">
             <li><a href="{% url 'mobile:index' %}"> MobileService</a></li>
           </ul>   -->
-          <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-              <li><a>Hello, {{ user.username }}.</a></li>
-              <li><a href="{% url 'users:logout' %}">log out</a></li>
-              <li><a href="{% url 'users:individual' %}">individual</a></li>
-            {% else %}
-              <li><a href="{% url 'users:register' %}">register</a></li>
-              <li><a href="{% url 'users:login' %}">log in</a></li>
-            {% endif %}
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li><a>Hello, {{ user.username }}.</a></li>
+                    <li><a href="{% url 'users:logout' %}">log out</a></li>
+                    <li><a href="{% url 'users:individual' %}">individual</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:register' %}">register</a></li>
+                    <li><a href="{% url 'users:login' %}">log in</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+
+        </div>
     </nav>
+      <!-- #Left Sidebar ==================== -->
+      <div class="sidebar">
+        <div class="sidebar-inner">
+          <!-- ### $Sidebar Header ### -->
+          <div class="sidebar-logo">
+            <div class="peers ai-c fxw-nw">
+              <div class="peer peer-greed">
+                <a class="sidebar-link td-n" href="index.html">
+                  <div class="peers ai-c fxw-nw">
+                    <div class="peer">
+                      <div class="logo">
+                        <!-- <img src="{% static "/images/logo.png" %}" alt=""> -->
+                      </div>
+                    </div>
+                    <div class="peer peer-greed">
+                      <h5 class="lh-1 mB-0 logo-text">MobileService</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="peer">
+                <div class="mobile-toggle sidebar-toggle">
+                  <a href="" class="td-n">
+                    <i class="ti-arrow-circle-left"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- ### $Sidebar Menu ### -->
+            <ul class="sidebar-menu scrollable pos-r">
+                <li class="nav-item mT-30 actived">
+                    <a class="sidebar-link" href="{% url 'users:service_prices' %}">
+                        <span class="icon-holder">
+                            <i class="c-blue-500 ti-money"></i>
+                        </span>
+                        <span class="title">Цены на услуги</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='sidebar-link' href="{% url 'mobile:telephones' %}">
+                        <span class="icon-holder">
+                            <i class="c-brown-500 ti-mobile"></i>
+                        </span>
+                        <span class="title">Телефоны</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='sidebar-link' href="{% url 'users:details' %}">
+                        <span class="icon-holder">
+                            <i class="c-blue-500 ti-harddrives"></i>
+                        </span>
+                        <span class="title">Детали</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='sidebar-link' href="{% url 'users:handbook' %}">
+                        <span class="icon-holder">
+                            <i class="c-deep-orange-500 ti-book"></i>
+                        </span>
+                        <span class="title">Справочная информация</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='sidebar-link' href="{% url 'users:settings' %}">
+                        <span class="icon-holder">
+                            <i class="c-deep-purple-500 ti-settings"></i>
+                        </span>
+                        <span class="title">Настройки</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+
     <div class="container">
-      <div class="page-header">
-        {% block header %}{% endblock header %}
-      </div>
-      <div>
-        {% block content %}{% endblock content %}
-      </div>
+        <div class="page-header">
+            {% block header %}{% endblock header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
     </div> <!-- /container -->
-  </body>
+</body>
+
 </html>
