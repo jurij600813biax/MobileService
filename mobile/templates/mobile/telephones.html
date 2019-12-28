@@ -4,6 +4,10 @@
   <h2>Телефоны</h2>
 {% endblock header %}
 {% block content %}
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
+{% endcompress %}
   <div class="row">
     <div class="col-sm-offset-8">
       <form action="{% url 'mobile:search_results' %}" method="get" autocomplete="off" >

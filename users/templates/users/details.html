@@ -4,6 +4,10 @@
   <h2>Details</h2>
 {% endblock header %}
 {% block content %}
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
+{% endcompress %}
   <div class="row">
     <div class="col-sm-offset-8">
       <form action="{% url 'users:details_search' %}" method="get" autocomplete="off" >

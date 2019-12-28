@@ -4,4 +4,8 @@
   <h2>Handbook</h2>
 {% endblock header %}
 {% block content %}
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
+{% endcompress %}
 {% endblock content %}

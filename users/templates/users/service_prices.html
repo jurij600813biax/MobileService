@@ -1,9 +1,14 @@
 {% extends "mobile/base.html" %}
 {% load bootstrap3 %}
+{% block content %}
 {% block header %}
   <h2>Service prices</h2>
 {% endblock header %}
-{% block content %}
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
+{% endcompress %}
+
   <div class="row">
     <div class="col-sm-offset-8">
       <form action="{% url 'users:service_search' %}" method="get" autocomplete="off" >
