@@ -11,17 +11,14 @@
 <link rel="stylesheet" href="/static/index.scss" type="text/x-scss" charset="utf-8">
 {% endcompress %}
 
-<div class="row">
-  <div class="col-sm-offset-8">
-    <form action="{% url 'users:service_search' %}" method="get" autocomplete="off">
-      <input name="q" type="text" placeholder="Search...">
-      <button type="submit" class="btn btn-success btn-sm">search</button>
-      <a href="{% url 'users:service_new_record' %}" class="btn btn-primary btn-sm">add record</a>
-    </form>
-  </div>
+<div class="submit-btn">
+      <a href="{% url 'users:service_new_record' %}" class="btn btn-primary btn-md">
+        <i class="ti-plus"></i>
+      </a>
 </div>
+
 <!-- ### $Table Start ### -->
-<main class='main-content bgc-grey-100'>
+
   <div id='mainContent'>
     <div class="container-fluid">
       <div class="row">
@@ -76,8 +73,12 @@
                     <td>{{price.record_1}}</td>
                     <td>{{price.record_2}}</td>
                     <td>{{price.record_3}}</td>
-                    <td><a href="{% url 'users:service_edit' price.id %}" class="btn btn-warning btn-xs">edit</a></td>
-                    <td><a href="{% url 'users:service_delete' price.id %}" class="btn btn-danger btn-xs">delete</a></td>
+                    <td><a href="{% url 'users:service_edit' price.id %}" class="btn btn-warning btn-xs">
+                      <i class="ti-pencil"></i>
+                    </a></td>
+                    <td><a href="{% url 'users:service_delete' price.id %}" class="btn btn-danger btn-xs">
+                      <i class="ti-trash"></i>
+                    </a></td>
                 </tr>
                 {% endfor %}
               </tbody>

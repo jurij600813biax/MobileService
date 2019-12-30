@@ -4,6 +4,16 @@
 @import './spec/index';
 @import './vendor/index';
 
-.page-container {
-    margin-top: 45px;
+#mainContent {
+    padding-top: 75px;
   }
+
+.page-container {
+  margin-right: 30px;
+  margin-left: auto;
+}
+
+.submit-btn {
+  margin-top: 30px;
+  float: right;
+}
