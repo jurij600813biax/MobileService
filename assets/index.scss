@@ -4,8 +4,6 @@
 @import './spec/index';
 @import './vendor/index';
 
-$primary-color: red;
-
-body {
-    color: $primary-color;
-}
+.page-container {
+    margin-top: 45px;
+  }
