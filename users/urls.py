@@ -18,5 +18,9 @@ urlpatterns=[
     path('details_edit/<int:detail_id>/', views.details_edit, name= 'details_edit'),
     path('details_delete/<int:detail_id>/', views.details_delete, name= 'details_delete'),
     path('handbook/', views.handbook, name= 'handbook'),
+    path('handbook_new_record/', views.handbook_new_record, name= 'handbook_new_record'),
+    path('handbook_search/', views.handbook_search, name= 'handbook_search'),
+    path('handbook_edit/<int:handbook_id>/', views.handbook_edit, name= 'handbook_edit'),
+    path('handbook_delete/<int:handbook_id>/',views.handbook_delete, name= 'handbook_delete'),
     path('settings/', views.settings, name= 'settings'),
 ]

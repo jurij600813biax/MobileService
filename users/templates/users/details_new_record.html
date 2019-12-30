@@ -1,11 +1,21 @@
 {% extends "mobile/base.html" %}
 {% load bootstrap3 %}
 {% block header %}
+
   <h2>Details</h2><h4>новая запись</h4>
+
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:details_new_record' %}" method='post'  class="form" autocomplete="off">
     {% csrf_token %}
+<!-- <style>
+h2,h4,
+.form-control,.control-label{
+color: red;
+font-family: "Times New Roman", Georgia, Serif;
+line-height: 1.3em;
+}
+</style>  -->
       <div class="row">
         <div class="col-xs-12 col-sm-2">
           {% bootstrap_field form.user_model %}

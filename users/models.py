@@ -155,3 +155,8 @@ class Details(models.Model):
     detail_price = models.CharField(max_length=5)
     detail_quantity = models.CharField(max_length=5)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Handbook(models.Model):
+    handbook_model = models.CharField(max_length=20)
+    designation = models.CharField(max_length=20)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)

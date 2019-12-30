@@ -1,5 +1,5 @@
 from django import forms
-from .models import Price_list,Details
+from .models import Price_list,Details,Handbook
 from django.forms import ModelForm
 
 class Price_listForm(forms.ModelForm):
@@ -13,3 +13,8 @@ class DetailsForm(forms.ModelForm):
         model= Details
         fields = ['user_model','user_model_1','user_detail','detail_quality','detail_comment','detail_price',
                   'detail_quantity']
+
+class HandbookForm(forms.ModelForm):
+    class Meta:
+        model= Handbook
+        fields = ['handbook_model','designation']

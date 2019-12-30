@@ -5,8 +5,8 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from mobile.models import Mobil
-from .models import Price_list,Details
-from .forms import Price_listForm, DetailsForm
+from .models import Price_list,Details,Handbook
+from .forms import Price_listForm, DetailsForm, HandbookForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
@@ -153,7 +153,61 @@ def details_delete(request,detail_id):
 
 @login_required
 def handbook(request):
-    return render(request, 'users/handbook.html')
+    handbooks = Handbook.objects.filter(owner=request.user)
+    context = {'handbooks': handbooks}
+    return render(request, 'users/handbook.html',context)
+
+@login_required
+def handbook_new_record(request):
+    if request.method != 'POST':
+        form = HandbookForm()
+    else:
+        form = HandbookForm(request.POST)
+        if form.is_valid():
+            handbook_new = form.save(commit=False)
+            handbook_new.owner = request.user
+            handbook_new.save()
+            return HttpResponseRedirect(reverse('users:handbook'))
+    context = {'form': form}
+    return render(request, 'users/handbook_new_record.html', context)
+
+@login_required
+def handbook_search(request):
+    query = request.GET.get('q')
+    if query:
+        eto_s = Handbook.objects.filter(owner=request.user)
+        object_list = eto_s.filter(
+            Q(handbook_model__exact=query) | Q(designation__exact=query))
+        context = {'object_list': object_list}
+    else:
+        context = {'object_list': []}
+    return render(request, 'users/handbook_search.html', context)
+
+@login_required
+def handbook_edit(request,handbook_id):
+    handbook = Handbook.objects.filter(owner=request.user).get(id=handbook_id)
+    if request.method != 'POST':
+        form = HandbookForm(instance=handbook)
+    else:
+        form = HandbookForm(instance=handbook, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:handbook'))
+    context = {'form': form, 'handbook': handbook}
+    return render(request, 'users/handbook_edit.html', context)
+
+@login_required
+def handbook_delete(request, handbook_id):
+    handbook = Handbook.objects.filter(owner=request.user).get(id=handbook_id)
+    if request.method != 'POST':
+        form = HandbookForm(instance=handbook)
+    else:
+        Handbook.objects.filter(id=handbook_id).delete()
+        return HttpResponseRedirect(reverse('users:handbook'))
+    context = {'form': form, 'handbook': handbook}
+    return render(request, 'users/handbook_delete.html', context)
+
+
 
 @login_required
 def settings(request):
