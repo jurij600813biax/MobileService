@@ -28,4 +28,10 @@
   {%else%}
     <p><h2>список пуст</h2></p>
   {%endif%}
+          <div class="row">
+            <div class="col-sm-offset-10 ">
+              <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
+                 отменить</a>
+            </div>
+          </div>
 {% endblock content %}
