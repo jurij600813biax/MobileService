@@ -1,7 +1,7 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Details</h2><h4>редактирование</h4>
+  <h2>Details</h2><h4>edit</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:details_edit' detail.id %}" method='post'>
@@ -34,9 +34,9 @@
     {% buttons %}
        <div class="row">
           <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">сохранить</button>
+            <button name="submit" class="btn btn-primary">save</button>
             <a href="{% url 'users:details' %}" class="btn btn-danger" >
-		    отменить</a>
+		    cancel</a>
           </div>
         </div>
       {% endbuttons %}

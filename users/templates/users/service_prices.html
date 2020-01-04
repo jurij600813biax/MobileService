@@ -22,15 +22,15 @@
     <thead>
       <tr class="info">
         <th colspan="2">Модель телефона</th>
-        <th style="width:8%">Тип батареи</th>
+
         <th style="width:8%">Замена батареи</th>
         <th style="width:8%">LCD SP</th>
         <th style="width:8%">LCD ориг</th>
         <th style="width:8%">LCD HQ</th>
         <th style="width:8%">Зарядка</th>
-        <th style="width:8%">record_1</th>
-        <th style="width:8%">record_2</th>
-        <th style="width:8%">record_3</th>
+        <th style="width:14%">record_1</th>
+        <th style="width:14%">record_2</th>
+<!--        <th style="width:8%">record_3</th> -->
         <th style="width:5%"></th>
         <th style="width:5%"></th>
       </tr>
@@ -40,7 +40,7 @@
         <tr>
           <td>{{price.user_model}}</td>
           <td>{{price.user_model_1}}</td>
-          <td>{{price.battery_type}}</td>
+
           <td>{{price.battery_replacement}}</td>
           <td>{{price.LCD_SP}}</td>
           <td>{{price.LCD_orig}}</td>
@@ -48,7 +48,7 @@
           <td>{{price.charging}}</td>
           <td>{{price.record_1}}</td>
           <td>{{price.record_2}}</td>
-          <td>{{price.record_3}}</td>
+<!--          <td>{{price.record_3}}</td>  -->
           <td><a href="{% url 'users:service_edit' price.id %}" class="btn btn-warning btn-xs">edit</a></td>
           <td><a href="{% url 'users:service_delete' price.id %}" class="btn btn-danger btn-xs">delete</a></td>
         </tr>

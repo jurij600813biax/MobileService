@@ -8,10 +8,10 @@
   <form action="{% url 'users:handbook_delete' handbook.id %}" method='post'>
     {% csrf_token %}
       <div class="row">
-         <div class="col-xs-12 col-sm-2">
+         <div class="col-xs-12 col-sm-4">
            {% bootstrap_field form.handbook_model %}
          </div>
-         <div class ="col-xs-12 col-sm-2">
+         <div class ="col-xs-12 col-sm-4">
            {% bootstrap_field form.designation %}
          </div>
       </div>
@@ -20,7 +20,7 @@
           <div class="col-sm-offset-9 ">
             <button name="submit" class="btn btn-primary">delete</button>
             <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
-		    отменить</a>
+		    cancel</a>
           </div>
         </div>
       {% endbuttons %}

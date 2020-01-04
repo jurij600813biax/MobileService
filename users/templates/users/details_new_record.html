@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% block header %}
 
-  <h2>Details</h2><h4>новая запись</h4>
+  <h2>Details</h2><h4>new record</h4>
 
 {% endblock header %}
 {% block content %}
@@ -44,9 +44,9 @@ line-height: 1.3em;
     {% buttons %}
        <div class="row">
           <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">добавить</button>
+            <button name="submit" class="btn btn-primary">add</button>
             <a href="{% url 'users:details' %}" class="btn btn-danger" >
-		    отменить</a>
+		    cancel</a>
           </div>
         </div>
       {% endbuttons %}

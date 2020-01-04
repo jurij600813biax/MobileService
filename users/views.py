@@ -33,13 +33,11 @@ def register(request):
 @login_required
 def individual(request):
     """Индивидуальные настройки"""
-    mobils = Mobil.objects.all()
-    context = {'mobils':mobils }
-    return render(request, 'users/individual.html',context)
+    return render(request, 'users/individual.html')
 
 @login_required
 def service_prices(request):
-    prices = Price_list.objects.filter(owner=request.user)
+    prices = Price_list.objects.filter(owner=request.user).order_by('user_model','user_model_1')
     context = {'prices': prices}
     return render(request, 'users/service_prices.html', context)
 
@@ -64,7 +62,7 @@ def service_search(request):
     if query:
         eto_s = Price_list.objects.filter(owner=request.user)
         object_list =eto_s.filter(
-            Q(user_model__exact=query) | Q(user_model_1__exact=query) )
+            Q(user_model__icontains=query) | Q(user_model_1__icontains=query) )
         context = {'object_list': object_list}
     else:
         context = {'object_list': []}
@@ -97,7 +95,7 @@ def service_delete(request,price_id):
 
 @login_required
 def details(request):
-    details = Details.objects.filter(owner=request.user)
+    details = Details.objects.filter(owner=request.user).order_by('user_model','user_model_1')
     context = {'details': details}
     return render(request, 'users/details.html', context)
 
@@ -119,9 +117,9 @@ def details_new_record(request):
 def details_search(request):
     query = request.GET.get('q')
     if query:
-        eto_s = Details.objects.filter(owner=request.user)
+        eto_s = Details.objects.filter(owner=request.user).order_by('user_model','user_model_1')
         object_list = eto_s.filter(
-            Q(user_model__exact=query) | Q(user_model_1__exact=query))
+            Q(user_model__icontains=query) | Q(user_model_1__icontains=query))
         context = {'object_list': object_list}
     else:
         context = {'object_list': []}
@@ -153,7 +151,7 @@ def details_delete(request,detail_id):
 
 @login_required
 def handbook(request):
-    handbooks = Handbook.objects.filter(owner=request.user)
+    handbooks = Handbook.objects.filter(owner=request.user).order_by('handbook_model')
     context = {'handbooks': handbooks}
     return render(request, 'users/handbook.html',context)
 
@@ -175,9 +173,9 @@ def handbook_new_record(request):
 def handbook_search(request):
     query = request.GET.get('q')
     if query:
-        eto_s = Handbook.objects.filter(owner=request.user)
+        eto_s = Handbook.objects.filter(owner=request.user).order_by('handbook_model')
         object_list = eto_s.filter(
-            Q(handbook_model__exact=query) | Q(designation__exact=query))
+            Q(handbook_model__icontains=query) | Q(designation__icontains=query))
         context = {'object_list': object_list}
     else:
         context = {'object_list': []}

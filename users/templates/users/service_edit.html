@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% block header %}
   <h2>Service prices</h2>
-  <h4>Редактирование записи</h4>
+  <h4>edit</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:service_edit' price.id %}" method='post'>
@@ -54,9 +54,9 @@
     {% buttons %}
        <div class="row">
           <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">сохранить</button>
+            <button name="submit" class="btn btn-primary">save</button>
             <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
-		    отменить</a>
+		      cancel</a>
           </div>
        </div>
     {% endbuttons %}

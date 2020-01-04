@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% block header %}
 <h2>Service prices</h2>
-<h4>новая запись</h4>
+<h4>new record</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:service_new_record' %}" method='post'  class="form" autocomplete="off">
@@ -53,9 +53,9 @@
     {% buttons %}
        <div class="row">
           <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">добавить</button>
+            <button name="submit" class="btn btn-primary">add</button>
             <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
-		    отменить</a>
+		      cancel</a>
           </div>
         </div>
       {% endbuttons %}
