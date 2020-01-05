@@ -1,23 +1,37 @@
-{% extends "mobile/base.html" %}
+{% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-   <h2>Individual</h2>
+   <h2>Individual</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
-<div class="container">
+
   <div class="row">
-     <div class="col-xs-12 col-sm-3">
-       <ul class="rounded">
-           <li><a href="{% url 'users:service_prices' %}"><h3>Service prices</h3></a></li>
-           <li><a href="{% url 'mobile:telephones' %}"><h3>Telephones</h3></a></li>
-           <li><a href="{% url 'users:details' %}"><h3>Details</h3></a></li>
-           <li><a href="{% url 'users:handbook' %}"><h3>Handbook</h3></a></li>
-           <li><a href="{% url 'users:settings' %}"><h3>Settings</h3></a></li>
-       </ul>
-     </div>
-       
-     <div class="col-xs-12 col-sm-3">
-     </div>
+      <div class="col-sm-offset-1">
+          <a href="{% url 'users:service_prices' %}"><h4>Service prices</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>Цены на услуги. Поиск осуществляется по модели телефона.</h4>
+      </div>
+      <div class="col-sm-offset-1">
+        <a href="{% url 'users:service_prices' %}"><h4>Telephones</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>База данных телефонов.<br>Порядковый номер регистрации увеличивается автоматически на 1<br>
+        (от максимального значения в памяти) при каждой новой записи.</h4>
+      </div>
+      <div class="col-sm-offset-1">
+        <a href="{% url 'users:details' %}"><h4>Details</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>Детали в наличии. Поиск осуществляется по модели телефона.</h4>
+      </div>
+      <div class="col-sm-offset-1">
+        <a href="{% url 'users:handbook' %}"><h4>Handbook</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>Соответствие модели телефона надписи на нём.<br>Поиск - по каждому параметру.</h4>
+      </div>
+
   </div>
 
 {% endblock content %}

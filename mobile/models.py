@@ -91,8 +91,8 @@ class Mobil(models.Model):
         (NOU,'Nous'),(ONE,'OnePlus'),(OUK,'Oukitel'),(ZOP,'Zopo'),(ZTE,'ZTE'),(OTH,'------->'))
     DEFECT = ((PRO,'Programm'),(LANG,'Язык'),(UNLO,'Отвязка'),(KOD,'Код'),(AKK,'Аккаунт'),(LCT,'LCD/Touch'),(LCD,'LCD'),
         (TOU,'Touch'),(NTO1,'Не вкл'),(NTO2,'Не вкл, Мокрый'),(NTO3,'Не вкл, Падал'),(N_C,'Не заряж'),(DIN,'Динамик'),
-        (BUZ,'Зуммер'),(MIC,'Микрофон'),(HEN,'Hands_Free'),(WIF,'Wi-Fi'),(WET,'Мокрый'),(SIM,'Sim'),(FLEX,'шлейф'),
-        (CASE,'корпус'),(OTH,'------->'))
+        (BUZ,'Зуммер'),(MIC,'Микрофон'),(HEN,'Hands_Free'),(WIF,'Wi-Fi'),(WET,'Мокрый'),(SIM,'Sim'),(FLEX,'Шлейф'),
+        (CASE,'Корпус'),(OTH,'------->'))
     STATUS = ((REP,'ремонт'),(REP_COM,'ремонт_завершён'),(TEL_TA,'забран'))
     STATE = ((NVD,'Нет видимых дефектов'),(DLT,'Повреждён экран/тоучскрин'),(DCS,'Повреждён корпус'),
         (DBC,'Повреждена задняя крышка'))

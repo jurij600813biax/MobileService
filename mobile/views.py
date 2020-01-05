@@ -16,7 +16,6 @@ def index(request):
 @login_required
 def telephones(request):
     mobils = Mobil.objects.filter(owner=request.user).order_by('-number_reg')
-
     context = {'mobils': mobils}
     return render(request, 'mobile/telephones.html', context)
 
@@ -31,7 +30,7 @@ def new_record(request):
             own_list = Mobil.objects.filter(owner=request.user)
             max_num=own_list.aggregate(Max('number_reg'))
             if not own_list:
-                max_num['number_reg__max']=0
+                max_num['number_ eg__max']=0
             next_number_reg=max_num['number_reg__max']+1
             nform.number_reg=str(next_number_reg)
             nform.owner = request.user
@@ -42,16 +41,12 @@ def new_record(request):
 
 @login_required
 def edit_record(request,mobil_id):
-    print("edit record method", request.method)
     mobil=Mobil.objects.filter(owner=request.user).get(id=mobil_id)
     if request.method != 'POST':
         form = EditForm(instance=mobil)
     else:
-        print(request.POST)
         form = EditForm(instance=mobil, data=request.POST)
-        print(mobil.imei)
         if form.is_valid():
-            print("IsValid")
             form.save()
             return HttpResponseRedirect(reverse('mobile:telephones'))
     context = {'form': form,'mobil':mobil}
