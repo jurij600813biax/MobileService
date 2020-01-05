@@ -1,4 +1,4 @@
-{% extends "mobile/base.html" %}
+{% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
   <h2>Handbook</h2>
@@ -8,19 +8,19 @@
   <form action="{% url 'users:handbook_delete' handbook.id %}" method='post'>
     {% csrf_token %}
       <div class="row">
-         <div class="col-xs-12 col-sm-2">
+         <div class="col-xs-12 col-sm-4">
            {% bootstrap_field form.handbook_model %}
          </div>
-         <div class ="col-xs-12 col-sm-2">
+         <div class ="col-xs-12 col-sm-4">
            {% bootstrap_field form.designation %}
          </div>
       </div>
     {% buttons %}
        <div class="row">
-          <div class="col-sm-offset-10 ">
+          <div class="col-sm-offset-9 ">
             <button name="submit" class="btn btn-primary">delete</button>
             <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
-		    отменить</a>
+		    cancel</a>
           </div>
         </div>
       {% endbuttons %}

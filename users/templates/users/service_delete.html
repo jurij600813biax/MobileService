@@ -1,4 +1,4 @@
-{% extends "mobile/base.html" %}
+{% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
   <h2>Service prices</h2>
@@ -53,10 +53,10 @@
 
     {% buttons %}
        <div class="row">
-          <div class="col-sm-offset-10 ">
+          <div class="col-sm-offset-9 ">
             <button name="submit" class="btn btn-primary">delete</button>
             <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
-		    отменить</a>
+		      cancel</a>
           </div>
        </div>
     {% endbuttons %}

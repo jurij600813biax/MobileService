@@ -1,7 +1,7 @@
 {% extends "mobile/base.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Телефоны</h2>
+  <h2>Telephones</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
   <div class="row">
@@ -25,7 +25,7 @@
         <th style="width:4%">Стикер</th>
         <th colspan="2">Модель телефона</th>
         <th style="width:12%">IMEI</th>
-        <th style="width:16%">Неисправность</th>
+        <th style="width:20%">Неисправность</th>
         <th style="width:8%">Статус</th>
         <th style="width:8%">Телефон</th>
         <th style="width:9%">Сдан(дата)</th>

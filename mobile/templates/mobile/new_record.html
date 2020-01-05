@@ -1,7 +1,7 @@
 {% extends "mobile/base.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Добавить новую запись</h2>
+  <h2>Telephones</h2><h4>new record</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'mobile:new_record' %}" method='post'  class="form" autocomplete="off">
@@ -61,9 +61,9 @@
       {% buttons %}
        <div class="row">
           <div class="col-sm-offset-10 ">
-            <button name="submit" class="btn btn-primary">добавить</button>
+            <button name="submit" class="btn btn-primary">add</button>
             <a href="{% url 'mobile:telephones' %}" class="btn btn-danger" >
-		    отменить</a>
+		    cancel</a>
           </div>
         </div>
       {% endbuttons %}

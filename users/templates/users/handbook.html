@@ -1,11 +1,11 @@
-{% extends "mobile/base.html" %}
+{% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Handbook</h2>
+  <h2>Handbook</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
   <div class="row">
-    <div class="col-sm-offset-8">
+    <div class="col-sm-offset-7">
       <form action="{% url 'users:handbook_search' %}" method="get" autocomplete="off" >
         <input name="q" type="text" placeholder="Search...">
         <button type="submit" class="btn btn-success btn-sm">search</button>
