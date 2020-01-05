@@ -157,6 +157,6 @@ class Details(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Handbook(models.Model):
-    handbook_model = models.CharField(max_length=20)
-    designation = models.CharField(max_length=20)
+    handbook_model = models.CharField(max_length=30)
+    designation = models.CharField(max_length=30)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
