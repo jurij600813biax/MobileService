@@ -116,6 +116,7 @@ class Mobil(models.Model):
     defect_tel = models.CharField(max_length=20,choices=DEFECT)
     defect_1_tel = models.CharField(max_length=20,choices=DEFECT,default='*')
     comment = models.CharField(max_length=200,default='*')
+    email_client = models.EmailField(max_length=254, default='*')
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def _str_(self):

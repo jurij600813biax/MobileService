@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # мои приложения
     'mobile',
     'users',
+    'send_email',
 ]
 
 MIDDLEWARE = [
@@ -160,6 +161,12 @@ if os.getcwd() == '/app':
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
-    
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mobile.service.parko28@gmail.com'
+EMAIL_HOST_PASSWORD = 'Rusl@n1988'
+DEFAULT_FROM_EMAIL = 'm.service'
+DEFAULT_TO_EMAIL = 'jurij.tatur@gmail.com'    
 
 

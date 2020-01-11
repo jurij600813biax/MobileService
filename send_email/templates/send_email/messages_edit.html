@@ -1,0 +1,27 @@
+{% extends "mobile/base_1.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Messages</h2><h4>edit</h4>
+{% endblock header %}
+{% block content %}
+  <form action="{% url 'send_email:messages_edit' message.id %}" method='post'>
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
+          {% bootstrap_field form.post_message %}
+        </div>
+        <div class ="col-xs-12 col-sm-6 col-sm-offset-1">
+          {% bootstrap_field form.text_message %}
+        </div>
+      </div>
+      {% buttons %}
+       <div class="row">
+          <div class="col-sm-offset-9 ">
+            <button name="submit" class="btn btn-primary">save </button>
+<!--            <a href="{% url 'users:details' %}" class="btn btn-danger" >
+		    cancel</a>  -->
+          </div>
+        </div>
+      {% endbuttons %}
+    </form>
+{% endblock content %}

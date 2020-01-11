@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('mobile.urls','mobile'), namespace='mobile')),
     path('users/', include(('users.urls','users'), namespace='users')),
+    path('send_email/',include(('send_email.urls','send_email'), namespace='send_email')),
 ]
