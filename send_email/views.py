@@ -8,9 +8,14 @@ from .models import Post
 from .forms import PostForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from mobile.models import Mobil
 
-def index(request):
-    return render(request, 'send_email/index.html')
+def index(request,mobil_id,message_id):
+    message_send = Post.objects.filter(owner=request.user).get(id=message_id)
+    mobil_send = Mobil.objects.filter(owner=request.user).get(id=mobil_id)
+    send_mail('test',message_send.text_message,"Yasoob",[mobil_send.email_client])
+    context={'mobil_send':mobil_send,'message_send':message_send,'mobil_id':mobil_id,'message_id': message_id}
+    return render(request, 'send_email/index.html',context)
 
 def success(request):
     email = request.POST.get('email', '')
@@ -42,6 +47,14 @@ def messages_new_record(request):
 def messages(request):
     messages = Post.objects.filter(owner=request.user).order_by('post_message','text_message')
     context = {'messages': messages}
+    print('messages')
+    return render(request, 'send_email/messages.html', context)
+
+def messages_mobil(request,mobil_id):
+    messages = Post.objects.filter(owner=request.user).order_by('post_message','text_message')
+    context = {'messages': messages,'mobil_id':mobil_id}
+    print('messages_mobil')
+    print(mobil_id)
     return render(request, 'send_email/messages.html', context)
 
 def messages_edit(request,message_id):

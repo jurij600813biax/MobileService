@@ -30,7 +30,7 @@ def new_record(request):
             own_list = Mobil.objects.filter(owner=request.user)
             max_num=own_list.aggregate(Max('number_reg'))
             if not own_list:
-                max_num['number_ eg__max']=0
+                max_num['number_reg__max']=0
             next_number_reg=max_num['number_reg__max']+1
             nform.number_reg=str(next_number_reg)
             nform.owner = request.user
@@ -44,6 +44,7 @@ def edit_record(request,mobil_id):
     mobil=Mobil.objects.filter(owner=request.user).get(id=mobil_id)
     if request.method != 'POST':
         form = EditForm(instance=mobil)
+        print(mobil_id)
     else:
         form = EditForm(instance=mobil, data=request.POST)
         if form.is_valid():

@@ -11,7 +11,7 @@
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
   </head>
 <body>
-     <div class="container login-f">
+ <!--    <div class="container login-f">
       <div class="row">
         <form class="col s12 m6 offset-m3" action="{% url 'send_email:success' %}" id="form" method="POST">
         {% csrf_token %}
@@ -21,12 +21,12 @@
               <div class="input-field col s12">
                 <input id="email" type="email" name="email" class="validate">
                 <label for="email">Email</label>
-              </div>
+              </div>  -->
  <!--               <div class="col s12">
                 <input type="checkbox" class="filled-in" name="checkbox" id="test5" />
                 <label for="test5">Welcome Email</label>
               </div> -->
-            </div>
+ <!--           </div>
             <div class="card-action">
               <a href="#" onclick="isEmail(document.getElementById('email').value)">SignUp</a>
             </div>
@@ -39,9 +39,9 @@
         <div class="container">&copy; 2015 Copyright Jurij Tatur
         </div>
       </div>
-    </footer>
+    </footer>  -->
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!--    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
     <script type="text/javascript">
     function isEmail(email) {
@@ -52,7 +52,12 @@
           alert("Your email is incorrect!");
         }
       }
-    </script>
+    </script> -->
+    <p>Telephone record {{ mobil_id }}</p>
+    <p>Number tel {{mobil_send.number_tel}}</p>
+    <p>Message number {{ message_id }}</p>
+    <p>Message text {{message_send.text_message}}</p>
+    <p>Цена {{mobil_send.price}}</p>
 
 </body>
 </html>

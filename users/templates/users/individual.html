@@ -31,7 +31,12 @@
       <div class="col-sm-offset-2">
         <h4>Соответствие модели телефона надписи на нём.<br>Поиск - по каждому параметру.</h4>
       </div>
-
+      <div class="col-sm-offset-1">
+        <a href="{% url 'send_email:messages' %}"><h4>Settings</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>SMS, eMAIL. Форма номера регистрации.</h4>
+      </div>
   </div>
 
 {% endblock content %}

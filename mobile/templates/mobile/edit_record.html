@@ -13,6 +13,13 @@
       <div class="col-xs-12 col-sm-3">
         {% bootstrap_field form.number_sticker %}
       </div>
+      <div class="col-xs-12 col-sm-3 col-sm-offset-3">
+        {% if mobil.number_tel != '+370' or mobil.email_client != '*@gmail.com' %}
+          <a href="{% url 'send_email:messages_mobil' mobil.id%}"><h3>Send message</h3></a>
+        {% else %}
+           <h3>Send message</h3>
+        {% endif %}
+      </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-3">

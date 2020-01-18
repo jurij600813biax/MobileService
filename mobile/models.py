@@ -105,7 +105,7 @@ class Mobil(models.Model):
     kod_tel = models.CharField(max_length=20,default='*')
     price = models.CharField(max_length=5)
     imei = models.CharField(max_length=20)
-    number_tel = models.CharField(max_length=20)
+    number_tel = models.CharField(max_length=20, default='+370')
     date_added = models.DateTimeField(auto_now_add=True)
     date_end = models.CharField(max_length=12,default='*')
     date_take_away = models.CharField(max_length=12,default='*')
@@ -116,7 +116,7 @@ class Mobil(models.Model):
     defect_tel = models.CharField(max_length=20,choices=DEFECT)
     defect_1_tel = models.CharField(max_length=20,choices=DEFECT,default='*')
     comment = models.CharField(max_length=200,default='*')
-    email_client = models.EmailField(max_length=254, default='*')
+    email_client = models.EmailField(max_length=254, default='*@gmail.com')
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def _str_(self):
