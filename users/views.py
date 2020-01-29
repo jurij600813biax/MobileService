@@ -119,7 +119,7 @@ def details_search(request):
     if query:
         eto_s = Details.objects.filter(owner=request.user).order_by('user_model','user_model_1')
         object_list = eto_s.filter(
-            Q(user_model__icontains=query) | Q(user_model_1__icontains=query))
+            Q(user_model__icontains=query) | Q(user_model_1__icontains=query) | Q(detail_visible__icontains=query))
         context = {'object_list': object_list}
     else:
         context = {'object_list': []}

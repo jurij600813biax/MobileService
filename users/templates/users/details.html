@@ -26,8 +26,9 @@
         <th style="width:16%">Деталь</th>
         <th style="width:8%">Качество</th>
         <th style="width:24%">Комментарий</th>
-        <th style="width:8%">Цена</th>
-        <th style="width:8%">Количество</th>
+        <th style="width:7%">Цена</th>
+        <th style="width:7%">Кол-во</th>
+        <th style="width:3%">Вид</th>
         <th style="width:5%"></th>
         <th style="width:5%"></th>
       </tr>
@@ -42,11 +43,11 @@
           <td>{{detail.detail_comment}}</td>
           <td>{{detail.detail_price}}</td>
           <td>{{detail.detail_quantity}}</td>
+          <td>{{detail.detail_visible}}</td>
           <td><a href="{% url 'users:details_edit' detail.id %}" class="btn btn-warning btn-xs">edit</a></td>
           <td><a href="{% url 'users:details_delete' detail.id %}" class="btn btn-danger btn-xs">delete</a></td>
         </tr>
       {% endfor %}
      </tbody>
  </table>
-
 {% endblock content %}

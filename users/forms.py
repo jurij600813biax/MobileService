@@ -14,9 +14,10 @@ class DetailsForm(forms.ModelForm):
     class Meta:
         model= Details
         fields = ['user_model','user_model_1','user_detail','detail_quality','detail_comment','detail_price',
-                  'detail_quantity']
+                  'detail_quantity','detail_visible']
         labels = {'user_model': 'Модель(бренд)', 'user_model_1': 'Модель','user_detail':'Деталь','detail_quality':
-                  'Качество','detail_comment':'Комментарии','detail_price':'Цена','detail_quantity':'Количество'}
+                  'Качество','detail_comment':'Комментарии','detail_price':'Цена','detail_quantity':'Количество',
+                  'detail_visible':'Показать всем'}
 
 class HandbookForm(forms.ModelForm):
     class Meta:

@@ -118,6 +118,7 @@ class Details(models.Model):
     NOK = 'Nokia'
     OTH = '------->'
 
+
     """детали"""
     LCD_MOD = 'LCD_module'
     LCD = 'LCD'
@@ -136,6 +137,10 @@ class Details(models.Model):
     HQ = 'HQ'
     COPY = 'COPY'
 
+    """видимость другим"""
+    VIS = 'Yes'
+    INVIS = 'No'
+
     BRAND = ((APL, 'IPhone'), (SAM, 'Samsung'), (HUA, 'Huawei'), (MEI, 'Meizu'), (XIA, 'Xiaomi'), (NOK, 'Nokia'),
         (MIR, 'Microsoft'), (PRE, 'Prestigio'), (SON, 'Sony'), (ALK, 'Alcatel'), (ASU, 'Asus'), (ASE, 'Aser'),
         (AMI, 'Amigo'), (AMO, 'Amoi'), (BVI, 'BlackView'), (BLU, 'BLU'), (BQ, 'BQ'), (BBR, 'BlackBerry'),
@@ -146,6 +151,7 @@ class Details(models.Model):
     DETAIL = ((BAT,'Battery'),(BC,'Back_cover'),(CAM_BC,'Camera_back'),(CAM_FR,'Camera_front'),(FLEX_CH,'Flex_charging'),
         (FLEX_ON,'Flex_ON/OFF'),(FLEX_CAM,'Flex_camera'),(LCD_MOD,'LCD_module'),(LCD,'LCD'),(TOU,'Touch'))
     QUALITY = ((SP,'SP'),(OR,'OR'),(HQ,'HQ'),(COPY,'COPY'))
+    DETAIL_VISIBILITY = ((VIS,'Yes'),(INVIS,'No'))
 
     user_model = models.CharField(max_length=20, choices = BRAND)
     user_model_1 = models.CharField(max_length=20)
@@ -155,6 +161,8 @@ class Details(models.Model):
     detail_price = models.CharField(max_length=5)
     detail_quantity = models.CharField(max_length=5)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    detail_visible = models.CharField(max_length=10, choices = DETAIL_VISIBILITY)
+
 
 class Handbook(models.Model):
     handbook_model = models.CharField(max_length=30)

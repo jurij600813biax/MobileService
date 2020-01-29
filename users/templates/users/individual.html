@@ -23,7 +23,8 @@
         <a href="{% url 'users:details' %}"><h4>Details</h4></a>
       </div>
       <div class="col-sm-offset-2">
-        <h4>Детали в наличии. Поиск осуществляется по модели телефона.</h4>
+        <h4>Детали в наличии. Поиск осуществляется по модели телефона и <br>видимости
+        другим пользователям.</h4>
       </div>
       <div class="col-sm-offset-1">
         <a href="{% url 'users:handbook' %}"><h4>Handbook</h4></a>
@@ -32,10 +33,16 @@
         <h4>Соответствие модели телефона надписи на нём.<br>Поиск - по каждому параметру.</h4>
       </div>
       <div class="col-sm-offset-1">
-        <a href="{% url 'send_email:messages' %}"><h4>Settings</h4></a>
+        <a href="{% url 'send_email:messages' %}"><h4>Messages</h4></a>
       </div>
       <div class="col-sm-offset-2">
-        <h4>SMS, eMAIL. Форма номера регистрации.</h4>
+        <h4>Шаблоны сообщений, высылаемых клиентам.</h4>
+      </div>
+      <div class="col-sm-offset-1">
+        <a href="{% url 'send_email:settings_common' %}"><h4>Settings</h4></a>
+      </div>
+      <div class="col-sm-offset-2">
+        <h4>Общие настройки.</h4>
       </div>
   </div>
 
