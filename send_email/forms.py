@@ -10,5 +10,9 @@ class PostForm(forms.ModelForm):
 class SettingsForm(forms.ModelForm):
     class Meta:
         model = Settings_common
-        fields = ['message_send_start','message_send_finish','number_reg_letter','number_reg_start','details_visible']
-
+        fields = ['message_send_start','message_send_finish','number_reg_letter','number_reg_start','details_visible',
+                  'free_set']
+        labels = {'message_send_start':'Время начала рассылки','message_send_finish':'Время завершения рассылки',
+                  'free_set':'Разрешить отправку сообщений','details_visible':'Показать каталог деталей всем',
+                  'number_reg_letter':'Буквенная часть номера регистрации',
+                  'number_reg_start':'Начальное цифровое значение'}

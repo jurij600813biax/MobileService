@@ -5,8 +5,8 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from mobile.models import Mobil
-from .models import Price_list,Details,Handbook
-from .forms import Price_listForm, DetailsForm, HandbookForm
+from .models import Price_list,Details,Details_order,Handbook
+from .forms import Price_listForm, DetailsForm, Details_orderForm, HandbookForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
@@ -99,6 +99,11 @@ def details(request):
     context = {'details': details}
     return render(request, 'users/details.html', context)
 
+def details_order(request):
+    details_order = Details_order.objects.filter(owner=request.user).order_by('user_model', 'user_model_1')
+    context = {'details_order': details_order}
+    return render(request, 'users/details_order.html', context)
+
 @login_required
 def details_new_record(request):
     if request.method != 'POST':
@@ -114,6 +119,21 @@ def details_new_record(request):
     return render(request, 'users/details_new_record.html', context)
 
 @login_required
+def details_order_new_record(request):
+    if request.method != 'POST':
+        form = Details_orderForm()
+    else:
+        form = Details_orderForm(request.POST)
+        if form.is_valid():
+            detail_order_new = form.save(commit=False)
+            detail_order_new.owner = request.user
+            detail_order_new.save()
+            return HttpResponseRedirect(reverse('users:details_order'))
+    context = {'form': form}
+    return render(request, 'users/details_order_new_record.html', context)
+
+
+@login_required
 def details_search(request):
     query = request.GET.get('q')
     if query:
@@ -124,6 +144,18 @@ def details_search(request):
     else:
         context = {'object_list': []}
     return render(request, 'users/details_search.html', context)
+
+def details_order_search(request):
+    query = request.GET.get('q')
+    if query:
+        eto_s = Details_order.objects.filter(owner=request.user).order_by('user_model','user_model_1')
+        object_list = eto_s.filter(
+            Q(user_model__icontains=query) | Q(user_model_1__icontains=query) | Q(number_tel_order__exact=query))
+        context = {'object_list': object_list}
+    else:
+        context = {'object_list': []}
+    return render(request, 'users/details_order_search.html', context)
+
 
 @login_required
 def details_edit(request,detail_id):
@@ -138,6 +170,18 @@ def details_edit(request,detail_id):
     context = {'form': form, 'detail': detail}
     return render(request, 'users/details_edit.html', context)
 
+def details_order_edit(request,detail_order_id):
+    detail_order = Details_order.objects.filter(owner=request.user).get(id=detail_order_id)
+    if request.method != 'POST':
+        form = Details_orderForm(instance=detail_order)
+    else:
+        form = Details_orderForm(instance=detail_order, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:details_order'))
+    context = {'form': form, 'detail_order': detail_order}
+    return render(request, 'users/details_order_edit.html', context)
+
 @login_required
 def details_delete(request,detail_id):
     detail = Details.objects.filter(owner=request.user).get(id=detail_id)
@@ -148,6 +192,16 @@ def details_delete(request,detail_id):
         return HttpResponseRedirect(reverse('users:details'))
     context = {'form': form, 'detail': detail}
     return render(request, 'users/details_delete.html', context)
+
+def details_order_delete(request,detail_order_id):
+    detail_order = Details_order.objects.filter(owner=request.user).get(id=detail_order_id)
+    if request.method != 'POST':
+        form = Details_orderForm(instance=detail_order)
+    else:
+        Details_order.objects.filter(id=detail_order_id).delete()
+        return HttpResponseRedirect(reverse('users:details_order'))
+    context = {'form': form, 'detail_order': detail_order}
+    return render(request, 'users/details_order_delete.html', context)
 
 @login_required
 def handbook(request):

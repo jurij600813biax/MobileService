@@ -31,24 +31,33 @@ def success(request):
     f.close()
     return render(request, 'send_email/success.html')
 
-def settings_common(request):
-    set_individuals = Settings_common.objects.filter(owner=request.user)
-    context = {'set_individuals': set_individuals}
-    return render(request, 'send_email/settings_common.html', context)
 
-def settings_common_new(request):
-    if request.method != 'POST':
-        form = SettingsForm()
+def settings_common(request):
+    set_1 = Settings_common.objects.filter(owner=request.user).first()
+    print(set_1.id)
+    if set_1:
+        set_info = Settings_common.objects.filter(owner=request.user).get(id=set_1.id)
+        if request.method != 'POST':
+            form = SettingsForm(instance=set_info)
+        else:
+            form = SettingsForm(instance=set_info, data=request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('users:individual'))
+        context = {'form': form, 'set_info': set_info}
+        return render(request, 'send_email/settings_common.html', context)
     else:
-        form = SettingsForm(request.POST)
-        if form.is_valid():
-            settings = form.save(commit=False)
-            settings.owner = request.user
-            print('OK ?')
-            settings.save()
-            return HttpResponseRedirect(reverse('send_email:settings_common'))
-    context = {'form': form}
-    return render(request, 'send_email/settings_common_new.html', context)
+        if request.method != 'POST':
+            form = SettingsForm()
+        else:
+            form = SettingsForm(request.POST)
+            if form.is_valid():
+                settings = form.save(commit=False)
+                settings.owner = request.user
+                settings.save()
+                return HttpResponseRedirect(reverse('users:individual'))
+        context = {'form': form}
+        return render(request, 'send_email/settings_common.html', context)
 
 def messages_new_record(request):
     if request.method != 'POST':

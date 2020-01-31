@@ -15,7 +15,12 @@
       </div>
       <div class="col-xs-12 col-sm-3 col-sm-offset-3">
         {% if mobil.number_tel != '+370' or mobil.email_client != '*@gmail.com' %}
-          <a href="{% url 'send_email:messages_mobil' mobil.id%}"><h3>Send message</h3></a>
+          {% if set_1.free_set == 'Yes' %}
+            <a href="{% url 'send_email:messages_mobil' mobil.id%}"><h3>Send message</h3></a>
+          {% else %}
+            <p>Чтобы отправить сообщение - измените</p>
+            <a href="{% url 'send_email:settings_common' %}"><h4>Settings</h4></a>
+          {% endif %}
         {% else %}
            <h3>Send message</h3>
         {% endif %}

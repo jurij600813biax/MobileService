@@ -29,8 +29,8 @@
             <td>{{detail.detail_comment}}</td>
             <td>{{detail.detail_price}}</td>
             <td>{{detail.detail_quantity}}</td>
-            <td><a href="{% url 'users:service_edit' detail.id %}" class="btn btn-warning btn-xs">edit</a></td>
-            <td><a href="{% url 'users:service_delete' detail.id %}" class="btn btn-danger btn-xs">delete</a></td>
+            <td><a href="{% url 'users:details_edit' detail.id %}" class="btn btn-warning btn-xs">edit</a></td>
+            <td><a href="{% url 'users:details_delete' detail.id %}" class="btn btn-danger btn-xs">delete</a></td>
           </tr>
         {% endfor %}
        </tbody>

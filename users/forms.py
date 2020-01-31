@@ -1,5 +1,5 @@
 from django import forms
-from .models import Price_list,Details,Handbook
+from .models import Price_list,Details,Handbook,Details_order
 from django.forms import ModelForm
 
 class Price_listForm(forms.ModelForm):
@@ -18,6 +18,12 @@ class DetailsForm(forms.ModelForm):
         labels = {'user_model': 'Модель(бренд)', 'user_model_1': 'Модель','user_detail':'Деталь','detail_quality':
                   'Качество','detail_comment':'Комментарии','detail_price':'Цена','detail_quantity':'Количество',
                   'detail_visible':'Показать всем'}
+
+class Details_orderForm(forms.ModelForm):
+    class Meta:
+        model= Details_order
+        fields = ['user_model', 'user_model_1', 'user_detail', 'detail_quality', 'detail_comment', 'detail_price',
+                  'detail_quantity', 'number_tel_order']
 
 class HandbookForm(forms.ModelForm):
     class Meta:

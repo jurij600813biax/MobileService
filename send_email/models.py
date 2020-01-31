@@ -20,5 +20,5 @@ class Settings_common(models.Model):
     details_visible = models.CharField(max_length=10, choices=DETAIL_VISIBILITY)
     type_message = models.CharField(max_length=20)
     reg_num_set = models.CharField(max_length=20)
-    free_set = models.CharField(max_length=20)
+    free_set = models.CharField(max_length=20, choices=DETAIL_VISIBILITY)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

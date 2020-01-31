@@ -1,0 +1,49 @@
+{% extends "mobile/base_1.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Details order</h2><h4>edit</h4>
+{% endblock header %}
+{% block content %}
+  <form action="{% url 'users:details_order_edit' detail_order.id %}" method='post'>
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model %}
+        </div>
+        <div class ="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_model_1 %}
+        </div>
+      </div>
+      <div class ="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.user_detail %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_quality %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_comment %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_price %}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.detail_quantity %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          {% bootstrap_field form.number_tel_order %}
+        </div>
+      </div>
+    {% buttons %}
+       <div class="row">
+          <div class="col-sm-offset-9 ">
+            <button name="submit" class="btn btn-primary">save</button>
+            <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
+		    cancel</a>
+          </div>
+        </div>
+      {% endbuttons %}
+    </form>
+{% endblock content %}

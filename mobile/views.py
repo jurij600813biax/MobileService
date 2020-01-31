@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect, Http404
 from .models import Mobil
+from send_email.models import Settings_common
 from .forms import MobilForm,EditForm
 from django.views.generic import ListView
 from django.db.models import Q
@@ -42,6 +43,7 @@ def new_record(request):
 @login_required
 def edit_record(request,mobil_id):
     mobil=Mobil.objects.filter(owner=request.user).get(id=mobil_id)
+    set_1 = Settings_common.objects.filter(owner=request.user).first()
     if request.method != 'POST':
         form = EditForm(instance=mobil)
         print(mobil_id)
@@ -50,7 +52,7 @@ def edit_record(request,mobil_id):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('mobile:telephones'))
-    context = {'form': form,'mobil':mobil}
+    context = {'form': form,'mobil':mobil,'set_1':set_1}
     return render(request, 'mobile/edit_record.html', context)
 
 @login_required

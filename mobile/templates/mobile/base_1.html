@@ -30,6 +30,7 @@
               <li><a>Hello, {{ user.username }}.</a></li>
               <li><a href="{% url 'users:logout' %}">log out</a></li>
               <li><a href="{% url 'users:individual' %}">individual</a></li>
+              <li><a href="{% url 'send_email:settings_common' %}">settings</a></li>
             {% else %}
               <li><a href="{% url 'users:register' %}">register</a></li>
               <li><a href="{% url 'users:login' %}">log in</a></li>
