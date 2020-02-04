@@ -5,6 +5,8 @@
 
 {% endblock header %}
 {% block content %}
+  <a href="{% url 'users:details_all' %}" class="btn btn-primary btn-sm">all details</a>
+  <a href="{% url 'users:details_order' %}" class="btn btn-primary btn-sm">orders</a>
   <div class="row">
     <div class="col-sm-offset-7">
       <form action="{% url 'users:details_search' %}" method="get" autocomplete="off" >

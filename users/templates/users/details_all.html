@@ -1,0 +1,67 @@
+{% extends "mobile/base_1.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Details all</h2><h4>{{user.username}}</h4>
+{% endblock header %}
+{% block content %}
+  <table>
+    {% for key, value in set_3.items %}
+      <div class="row">
+        <div class="col-sm-1">
+            {{ key }}
+        </div>
+        <div class="col-sm-2">
+           {{ value }}
+        </div>
+      </div>
+    {% endfor %}
+  </table>
+  <div class="row">
+    <div class="col-sm-offset-8">
+      <form action="{% url 'users:details_all_search' %}" method="get" autocomplete="off" >
+        <input name="q" type="text" placeholder="Search...">
+        <button type="submit" class="btn btn-success btn-sm">search</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <h3></h3>
+    </div>
+  </div>
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+      <tr class="info">
+        <th colspan="2">Модель телефона</th>
+        <th style="width:16%">Деталь</th>
+        <th style="width:8%">Качество</th>
+        <th style="width:24%">Комментарий</th>
+        <th style="width:7%">Цена</th>
+        <th style="width:7%">Кол-во</th>
+        <th style="width:11%">N контакта</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for detail_all in details_all %}
+        {% if detail_all.owner_id in set_2 %}
+          {% if detail_all.detail_visible == 'Yes' %}
+            <tr>
+              <td>{{detail_all.user_model}}</td>
+              <td>{{detail_all.user_model_1}}</td>
+              <td>{{detail_all.user_detail}}</td>
+              <td>{{detail_all.detail_quality}}</td>
+              <td>{{detail_all.detail_comment}}</td>
+              <td>{{detail_all.detail_price}}</td>
+              <td>{{detail_all.detail_quantity}}</td>
+              <td>{{detail_all.owner_id}}</td>
+            </tr>
+          {% endif %}
+       {% endif %}
+    {% endfor %}
+
+     </tbody>
+ </table>
+
+{% endblock content %}
+
+

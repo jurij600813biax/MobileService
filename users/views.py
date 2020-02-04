@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from mobile.models import Mobil
 from .models import Price_list,Details,Details_order,Handbook
+from send_email.models import Settings_common
 from .forms import Price_listForm, DetailsForm, Details_orderForm, HandbookForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -104,6 +105,18 @@ def details_order(request):
     context = {'details_order': details_order}
     return render(request, 'users/details_order.html', context)
 
+def details_all(request):
+    details_all = Details.objects.order_by('user_model', 'user_model_1')
+    set_2 = []
+    set_3 = {}
+    all_owners = Settings_common.objects.order_by('owner')
+    for all_owner in all_owners:
+        if all_owner.details_visible == 'Yes':
+            set_2.append(all_owner.owner_id)
+            set_3[all_owner.owner_id]= all_owner.contact_number
+    context = {'details_all': details_all,'set_2':set_2,'set_3': set_3}
+    return render(request, 'users/details_all.html', context)
+
 @login_required
 def details_new_record(request):
     if request.method != 'POST':
@@ -144,6 +157,25 @@ def details_search(request):
     else:
         context = {'object_list': []}
     return render(request, 'users/details_search.html', context)
+
+def details_all_search(request):
+    query = request.GET.get('q')
+    if query:
+        set_2 = []
+        set_3 = {}
+        all_owners = Settings_common.objects.order_by('owner')
+        for all_owner in all_owners:
+            if all_owner.details_visible == 'Yes':
+                set_2.append(all_owner.owner_id)
+                set_3[all_owner.owner_id] = all_owner.contact_number
+        details_search = Details.objects.filter(owner_id__in= set_2).filter(detail_visible__iexact='Yes').order_by\
+            ('user_model', 'user_model_1')
+        object_list = details_search.filter(
+            Q(user_model__icontains=query) | Q(user_model_1__icontains=query))
+        context = {'object_list': object_list, 'set_3': set_3}
+    else:
+        context = {'object_list': []}
+    return render(request, 'users/details_all_search.html', context)
 
 def details_order_search(request):
     query = request.GET.get('q')
@@ -261,9 +293,7 @@ def handbook_delete(request, handbook_id):
 
 
 
-@login_required
-def settings(request):
-    return render(request, 'users/settings.html')
+
 
 
 

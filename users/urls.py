@@ -13,8 +13,10 @@ urlpatterns=[
     path('service_edit/<int:price_id>/', views.service_edit, name = 'service_edit'),
     path('service_delete/<int:price_id>/', views.service_delete, name= 'service_delete'),
     path('details/', views.details, name= 'details'),
+    path('details_all/', views.details_all, name= 'details_all'),
+    path('details_all_search/', views.details_all_search, name='details_all_search'),
     path('details_new_record/', views.details_new_record, name= 'details_new_record'),
-    path('details_search', views.details_search, name= 'details_search'),
+    path('details_search/', views.details_search, name= 'details_search'),
     path('details_edit/<int:detail_id>/', views.details_edit, name= 'details_edit'),
     path('details_delete/<int:detail_id>/', views.details_delete, name= 'details_delete'),
     path('details_order/', views.details_order, name= 'details_order'),
@@ -27,5 +29,4 @@ urlpatterns=[
     path('handbook_search/', views.handbook_search, name= 'handbook_search'),
     path('handbook_edit/<int:handbook_id>/', views.handbook_edit, name= 'handbook_edit'),
     path('handbook_delete/<int:handbook_id>/',views.handbook_delete, name= 'handbook_delete'),
-    path('settings/', views.settings, name= 'settings'),
 ]
