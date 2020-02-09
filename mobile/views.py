@@ -29,11 +29,20 @@ def new_record(request):
         if form.is_valid():
             nform=form.save(commit=False)
             own_list = Mobil.objects.filter(owner=request.user)
-            max_num=own_list.aggregate(Max('number_reg'))
+            set_1 = Settings_common.objects.filter(owner=request.user).first()
+            max_num = own_list.aggregate(Max('number_reg'))
             if not own_list:
-                max_num['number_reg__max']=0
-            next_number_reg=max_num['number_reg__max']+1
-            nform.number_reg=str(next_number_reg)
+                max_num['number_reg__max']=set_1.number_reg_start-1
+            next_number_reg = max_num['number_reg__max']+1
+            if next_number_reg > 99999:
+                next_number_reg = 0
+            nform.number_reg = str(next_number_reg)
+            alen_1 = set_1.number_reg_letter + " "
+            alen = len(nform.number_reg)
+            while alen < 5:
+                alen_1 += '0'
+                alen +=1
+            nform.complex_number_reg = alen_1 + str(next_number_reg)
             nform.owner = request.user
             nform.save()
             return HttpResponseRedirect(reverse('mobile:telephones'))
@@ -46,7 +55,6 @@ def edit_record(request,mobil_id):
     set_1 = Settings_common.objects.filter(owner=request.user).first()
     if request.method != 'POST':
         form = EditForm(instance=mobil)
-        print(mobil_id)
     else:
         form = EditForm(instance=mobil, data=request.POST)
         if form.is_valid():

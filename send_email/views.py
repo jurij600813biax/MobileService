@@ -4,7 +4,7 @@ import django
 from django.conf import settings
 from django.core.mail import send_mail
 from django.urls import reverse
-from .models import Post, Settings_common
+from .models import Post, Settings_common, Send_message
 from .forms import PostForm,SettingsForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -13,8 +13,19 @@ from mobile.models import Mobil
 def index(request,mobil_id,message_id):
     message_send = Post.objects.filter(owner=request.user).get(id=message_id)
     mobil_send = Mobil.objects.filter(owner=request.user).get(id=mobil_id)
-    send_mail('test',message_send.text_message,"Jurij",[mobil_send.email_client])
-    context={'mobil_send':mobil_send,'message_send':message_send,'mobil_id':mobil_id,'message_id': message_id}
+    set_1 = Settings_common.objects.filter(owner=request.user).first()
+#    send_mail('test',message_send.text_message,"Jurij",[mobil_send.email_client])
+    c= Send_message(send_message_start = set_1.message_send_start,send_message_finish = set_1.message_send_finish,
+                    send_message_text = message_send.text_message,send_message_email = mobil_send.email_client,
+                    send_message_number_tel = mobil_send.number_tel,send_message_sticker = mobil_send.number_sticker,
+                    send_message_price = mobil_send.price,owner = request.user)
+    if request.method != 'POST':
+        b = c
+    else:
+        c.save()
+        return HttpResponseRedirect(reverse('mobile:telephones'))
+#    bs = Send_message.objects.filter(owner=request.user)
+    context={'b':b,'mobil_id': mobil_id, 'message_id': message_id}
     return render(request, 'send_email/index.html',context)
 
 def success(request):
@@ -34,7 +45,6 @@ def success(request):
 
 def settings_common(request):
     set_1 = Settings_common.objects.filter(owner=request.user).first()
-    print(set_1.id)
     if set_1:
         set_info = Settings_common.objects.filter(owner=request.user).get(id=set_1.id)
         if request.method != 'POST':

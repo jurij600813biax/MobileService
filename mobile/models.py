@@ -99,6 +99,7 @@ class Mobil(models.Model):
     
     
     number_reg = models.IntegerField(default=0)
+    complex_number_reg = models.CharField(max_length=10)
     number_sticker = models.CharField(max_length=5)
     model_tel = models.CharField(max_length=20,choices=BRAND)
     model_1_tel = models.CharField(max_length=20)
