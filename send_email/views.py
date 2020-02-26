@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.urls import reverse
 from .models import Post, Settings_common, Send_message
-from .forms import PostForm,SettingsForm
+from .forms import PostForm,SettingsForm, Send_messageForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from mobile.models import Mobil
@@ -21,11 +21,12 @@ def index(request,mobil_id,message_id):
                     send_message_price = mobil_send.price,owner = request.user)
     if request.method != 'POST':
         b = c
+        form = Send_messageForm()
     else:
         c.save()
         return HttpResponseRedirect(reverse('mobile:telephones'))
 #    bs = Send_message.objects.filter(owner=request.user)
-    context={'b':b,'mobil_id': mobil_id, 'message_id': message_id}
+    context={'b':b,'mobil_id': mobil_id, 'message_id': message_id,'form':form}
     return render(request, 'send_email/index.html',context)
 
 def success(request):
