@@ -14,6 +14,7 @@ def index(request,mobil_id,message_id):
     message_send = Post.objects.filter(owner=request.user).get(id=message_id)
     mobil_send = Mobil.objects.filter(owner=request.user).get(id=mobil_id)
     set_1 = Settings_common.objects.filter(owner=request.user).first()
+#    set_2 = Send_message.objects.filter(owner=request.user)
 #    send_mail('test',message_send.text_message,"Jurij",[mobil_send.email_client])
     c= Send_message(send_message_start = set_1.message_send_start,send_message_finish = set_1.message_send_finish,
                     send_message_text = message_send.text_message,send_message_email = mobil_send.email_client,
