@@ -31,5 +31,5 @@ class Send_message(models.Model):
     send_message_number_tel = models.CharField(max_length=20)
     send_message_sticker = models.CharField(max_length=5)
     send_message_price = models.CharField(max_length=5)
-    send_message_performance = models.CharField(max_length=5)
+    send_message_date = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

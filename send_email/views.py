@@ -22,10 +22,13 @@ def index(request,mobil_id,message_id):
                     send_message_price = mobil_send.price,owner = request.user)
     if request.method != 'POST':
         b = c
-        form = Send_messageForm()
+        form = Send_messageForm(instance=c)
     else:
         c.save()
-        return HttpResponseRedirect(reverse('mobile:telephones'))
+        form = Send_messageForm(instance=c, data=request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse('send_email:send_messages_all'))
 #    bs = Send_message.objects.filter(owner=request.user)
     context={'b':b,'mobil_id': mobil_id, 'message_id': message_id,'form':form}
     return render(request, 'send_email/index.html',context)
@@ -128,3 +131,8 @@ def messages_search(request):
     else:
         context = {'object_list': []}
     return render(request, 'send_email/messages_search.html', context)
+
+def send_messages_all(request):
+    send_messages_all = Send_message.objects.filter(owner=request.user).order_by('-id')
+    context = {'send_messages_all': send_messages_all}
+    return render(request, 'send_email/send_messages_all.html', context)

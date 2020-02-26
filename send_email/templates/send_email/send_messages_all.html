@@ -1,0 +1,35 @@
+{% extends "mobile/base_1.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Send messages all</h2><h4>{{user.username}}</h4>
+{% endblock header %}
+{% block content %}
+  <div class="row">
+    <div class="col-sm-8">
+      <h3></h3>
+    </div>
+  </div>
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+      <tr class="info">
+        <th style="width:4%">Стикер</th>
+        <th style="width:20%">Эл.почта</th>
+        <th style="width:12%">N телефона</th>
+        <th>Текст сообщения</th>
+        <th style="width:4%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for send_message_all in send_messages_all %}
+        <tr>
+          <td>{{send_message_all.send_message_sticker}}</td>
+          <td>{{send_message_all.send_message_email}}</td>
+          <td>{{send_message_all.send_message_number_tel}}</td>
+          <td>{{send_message_all.send_message_text}}</td>
+          <td></td>
+        </tr>
+      {% endfor %}
+     </tbody>
+ </table>
+{% endblock content %}
+
