@@ -16,7 +16,7 @@
         <th style="width:20%">Эл.почта</th>
         <th style="width:12%">N телефона</th>
         <th>Текст сообщения</th>
-        <th style="width:4%"></th>
+        <th style="width:20%">Выслано</th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +26,7 @@
           <td>{{send_message_all.send_message_email}}</td>
           <td>{{send_message_all.send_message_number_tel}}</td>
           <td>{{send_message_all.send_message_text}}</td>
-          <td></td>
+          <td>{{send_message_all.send_message_date}}</td>
         </tr>
       {% endfor %}
      </tbody>
