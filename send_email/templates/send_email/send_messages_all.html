@@ -1,7 +1,7 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Send messages all</h2><h4>{{user.username}}</h4>
+  <h2>Messages</h2><h4>sent</h4>
 {% endblock header %}
 {% block content %}
   <div class="row">
@@ -25,6 +25,7 @@
         <th style="width:12%">N телефона</th>
         <th>Текст сообщения</th>
         <th style="width:21%">Выслано</th>
+        <th style="width:4%"></th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,8 @@
           <td>{{send_message_all.send_message_number_tel}}</td>
           <td>{{send_message_all.send_message_text}}</td>
           <td>{{send_message_all.send_message_date}}</td>
+          <td><a href="{% url 'send_email:send_messages_all_delete' send_message_all.id %}" class="btn btn-danger btn-xs">
+            delete</a></td>
         </tr>
       {% endfor %}
      </tbody>

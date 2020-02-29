@@ -147,6 +147,12 @@ def send_messages_all(request):
     return render(request, 'send_email/send_messages_all.html', context)
 
 @login_required
+def send_messages_all_delete(request,message_id):
+    Send_message.objects.filter(id=message_id).delete()
+    return HttpResponseRedirect(reverse('send_email:send_messages_all'))
+
+
+@login_required
 def send_messages_all_search(request):
     query = request.GET.get('q')
     if query:
