@@ -50,16 +50,14 @@
           {% bootstrap_field form.record_3 %}
         </div>
       </div>
-
     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">save</button>
-            <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
+      <div class="row">
+        <div class="col-sm-offset-9 ">
+          <button name="submit" class="btn btn-primary">save</button>
+          <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
 		      cancel</a>
-          </div>
-       </div>
+        </div>
+      </div>
     {% endbuttons %}
   </form>
-
 {% endblock content %}

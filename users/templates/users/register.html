@@ -4,12 +4,10 @@
   <h2>Registration</h2>
 {% endblock header %}
 {% block content %}
-
-  <form method="post" action="{% url 'users:register' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">register</button>
-    <input type="hidden" name="next" value="{% url 'mobile:index' %}" />
-  </form>
-
+ <form method="post" action="{% url 'users:register' %}">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button name="submit">register</button>
+   <input type="hidden" name="next" value="{% url 'mobile:index' %}" />
+ </form>
 {% endblock content %}

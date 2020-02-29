@@ -1,8 +1,8 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-<h2>Service prices</h2>
-<h4>new record</h4>
+  <h2>Service prices</h2>
+  <h4>new record</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:service_new_record' %}" method='post'  class="form" autocomplete="off">
@@ -51,13 +51,13 @@
         </div>
       </div>
     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">add</button>
-            <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
+      <div class="row">
+        <div class="col-sm-offset-9 ">
+          <button name="submit" class="btn btn-primary">add</button>
+          <a href="{% url 'users:service_prices' %}" class="btn btn-danger" >
 		      cancel</a>
-          </div>
         </div>
-      {% endbuttons %}
-    </form>
+      </div>
+    {% endbuttons %}
+  </form>
 {% endblock content %}

@@ -37,14 +37,14 @@
           {% bootstrap_field form.number_tel_order %}
         </div>
       </div>
-      {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">delete</button>
-            <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
+    {% buttons %}
+      <div class="row">
+        <div class="col-sm-offset-9 ">
+          <button name="submit" class="btn btn-primary">delete</button>
+          <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
 		    cancel</a>
-          </div>
         </div>
-      {% endbuttons %}
-    </form>
+      </div>
+    {% endbuttons %}
+  </form>
 {% endblock content %}

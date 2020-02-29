@@ -4,25 +4,25 @@
   <h2>Handbook</h2><h4>new record</h4>
 {% endblock header %}
 {% block content %}
- <form action="{% url 'users:handbook_new_record' %}" method='post'  class="form" autocomplete="off">
-     {% csrf_token %}
-       <div class="row">
-         <div class="col-xs-12 col-sm-4">
-           {% bootstrap_field form.handbook_model %}
-         </div>
-         <div class ="col-xs-12 col-sm-4">
-           {% bootstrap_field form.designation %}
-         </div>
+  <form action="{% url 'users:handbook_new_record' %}" method='post'  class="form" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        {% bootstrap_field form.handbook_model %}
       </div>
-     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">add</button>
-            <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
+      <div class ="col-xs-12 col-sm-4">
+        {% bootstrap_field form.designation %}
+      </div>
+    </div>
+    {% buttons %}
+      <div class="row">
+        <div class="col-sm-offset-9 ">
+          <button name="submit" class="btn btn-primary">add</button>
+          <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
 		    cancel</a>
-          </div>
         </div>
-      {% endbuttons %}
- </form>
+      </div>
+    {% endbuttons %}
+  </form>
 {% endblock content %}
 

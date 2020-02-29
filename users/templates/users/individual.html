@@ -1,49 +1,47 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-   <h2>Individual</h2><h4>{{user.username}}</h4>
+  <h2>Individual</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
-
   <div class="row">
-      <div class="col-sm-offset-1">
-          <a href="{% url 'users:service_prices' %}"><h4>Service prices</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>Цены на услуги. Поиск осуществляется по модели телефона.</h4>
-      </div>
-      <div class="col-sm-offset-1">
-        <a href="{% url 'users:service_prices' %}"><h4>Telephones</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>База данных телефонов.<br>Порядковый номер регистрации увеличивается автоматически на 1<br>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'users:service_prices' %}"><h4>Service prices</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>Цены на услуги. Поиск осуществляется по модели телефона.</h4>
+    </div>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'users:service_prices' %}"><h4>Telephones</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>База данных телефонов.<br>Порядковый номер регистрации увеличивается автоматически на 1<br>
         (от максимального значения в памяти) при каждой новой записи.</h4>
-      </div>
-      <div class="col-sm-offset-1">
-        <a href="{% url 'users:details' %}"><h4>Details</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>Детали в наличии. Поиск осуществляется по модели телефона и <br>видимости
+    </div>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'users:details' %}"><h4>Details</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>Детали в наличии. Поиск осуществляется по модели телефона и <br>видимости
         другим пользователям.</h4>
-      </div>
-      <div class="col-sm-offset-1">
-        <a href="{% url 'users:handbook' %}"><h4>Handbook</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>Соответствие модели телефона надписи на нём.<br>Поиск - по каждому параметру.</h4>
-      </div>
-      <div class="col-sm-offset-1">
-        <a href="{% url 'send_email:messages' %}"><h4>Messages</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>Шаблоны сообщений, высылаемых клиентам.</h4>
-      </div>
-      <div class="col-sm-offset-1">
-        <a href="{% url 'send_email:settings_common' %}"><h4>Settings</h4></a>
-      </div>
-      <div class="col-sm-offset-2">
-        <h4>Общие настройки.</h4>
-      </div>
+    </div>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'users:handbook' %}"><h4>Handbook</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>Соответствие модели телефона надписи на нём.<br>Поиск - по каждому параметру.</h4>
+    </div>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'send_email:messages' %}"><h4>Messages</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>Шаблоны сообщений, высылаемых клиентам.</h4>
+    </div>
+    <div class="col-sm-offset-1">
+      <a href="{% url 'send_email:settings_common' %}"><h4>Settings</h4></a>
+    </div>
+    <div class="col-sm-offset-2">
+      <h4>Общие настройки.</h4>
+    </div>
   </div>
-
 {% endblock content %}

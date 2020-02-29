@@ -100,11 +100,13 @@ def details(request):
     context = {'details': details}
     return render(request, 'users/details.html', context)
 
+@login_required
 def details_order(request):
     details_order = Details_order.objects.filter(owner=request.user).order_by('user_model', 'user_model_1')
     context = {'details_order': details_order}
     return render(request, 'users/details_order.html', context)
 
+@login_required
 def details_all(request):
     details_all = Details.objects.order_by('user_model', 'user_model_1')
     set_2 = []
@@ -158,6 +160,7 @@ def details_search(request):
         context = {'object_list': []}
     return render(request, 'users/details_search.html', context)
 
+@login_required
 def details_all_search(request):
     query = request.GET.get('q')
     if query:
@@ -177,6 +180,7 @@ def details_all_search(request):
         context = {'object_list': []}
     return render(request, 'users/details_all_search.html', context)
 
+@login_required
 def details_order_search(request):
     query = request.GET.get('q')
     if query:
@@ -202,6 +206,7 @@ def details_edit(request,detail_id):
     context = {'form': form, 'detail': detail}
     return render(request, 'users/details_edit.html', context)
 
+@login_required
 def details_order_edit(request,detail_order_id):
     detail_order = Details_order.objects.filter(owner=request.user).get(id=detail_order_id)
     if request.method != 'POST':
@@ -225,6 +230,7 @@ def details_delete(request,detail_id):
     context = {'form': form, 'detail': detail}
     return render(request, 'users/details_delete.html', context)
 
+@login_required
 def details_order_delete(request,detail_order_id):
     detail_order = Details_order.objects.filter(owner=request.user).get(id=detail_order_id)
     if request.method != 'POST':

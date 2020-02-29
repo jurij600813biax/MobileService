@@ -5,20 +5,20 @@
 {% endblock header %}
 {% block content %}
   <form method="post" action="{% url 'users:login' %}" class="form" autocomplete="off">
-{% csrf_token %}
+  {% csrf_token %}
   <div class="row">
     <div class="col-sm-4">
-    {% bootstrap_field form.username %}
+      {% bootstrap_field form.username %}
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
-    {% bootstrap_field form.password %}
+      {% bootstrap_field form.password %}
     </div>
   </div>
     {% buttons %}
       <button name="submit" class="btn btn-primary">log in</button>
     {% endbuttons %}
-<input type="hidden" name="next" value="{% url 'users:individual' %}" />
-</form>
+    <input type="hidden" name="next" value="{% url 'users:individual' %}" />
+  </form>
 {% endblock content %}

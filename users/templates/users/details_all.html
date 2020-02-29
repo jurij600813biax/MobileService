@@ -8,10 +8,10 @@
     {% for key, value in set_3.items %}
       <div class="row">
         <div class="col-sm-1">
-            {{ key }}
+          {{ key }}
         </div>
         <div class="col-sm-2">
-           {{ value }}
+          {{ value }}
         </div>
       </div>
     {% endfor %}
@@ -29,7 +29,7 @@
       <h3></h3>
     </div>
   </div>
-<table class="table table-striped table-bordered table-condensed table-hover">
+  <table class="table table-striped table-bordered table-condensed table-hover">
     <thead>
       <tr class="info">
         <th colspan="2">Модель телефона</th>
@@ -43,25 +43,23 @@
     </thead>
     <tbody>
     {% for detail_all in details_all %}
-        {% if detail_all.owner_id in set_2 %}
-          {% if detail_all.detail_visible == 'Yes' %}
-            <tr>
-              <td>{{detail_all.user_model}}</td>
-              <td>{{detail_all.user_model_1}}</td>
-              <td>{{detail_all.user_detail}}</td>
-              <td>{{detail_all.detail_quality}}</td>
-              <td>{{detail_all.detail_comment}}</td>
-              <td>{{detail_all.detail_price}}</td>
-              <td>{{detail_all.detail_quantity}}</td>
-              <td>{{detail_all.owner_id}}</td>
-            </tr>
-          {% endif %}
-       {% endif %}
+      {% if detail_all.owner_id in set_2 %}
+        {% if detail_all.detail_visible == 'Yes' %}
+          <tr>
+            <td>{{detail_all.user_model}}</td>
+            <td>{{detail_all.user_model_1}}</td>
+            <td>{{detail_all.user_detail}}</td>
+            <td>{{detail_all.detail_quality}}</td>
+            <td>{{detail_all.detail_comment}}</td>
+            <td>{{detail_all.detail_price}}</td>
+            <td>{{detail_all.detail_quantity}}</td>
+            <td>{{detail_all.owner_id}}</td>
+          </tr>
+        {% endif %}
+      {% endif %}
     {% endfor %}
-
-     </tbody>
- </table>
-
+    </tbody>
+  </table>
 {% endblock content %}
 
 

@@ -4,55 +4,53 @@
   <h2>Details all search</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
-{%if object_list %}
-  <table>
-    {% for key, value in set_3.items %}
-      <div class="row">
-        <div class="col-sm-1">
+  {%if object_list %}
+    <table>
+      {% for key, value in set_3.items %}
+        <div class="row">
+          <div class="col-sm-1">
             {{ key }}
+          </div>
+          <div class="col-sm-2">
+            {{ value }}
+          </div>
         </div>
-        <div class="col-sm-2">
-           {{ value }}
+      {% endfor %}
+    </table>
+      <div class="row">
+        <div class="col-sm-8">
+          <h3></h3>
         </div>
       </div>
-    {% endfor %}
-  </table>
-  <div class="row">
-    <div class="col-sm-8">
-      <h3></h3>
-    </div>
-  </div>
-<table class="table table-striped table-bordered table-condensed table-hover">
-    <thead>
-      <tr class="info">
-        <th colspan="2">Модель телефона</th>
-        <th style="width:16%">Деталь</th>
-        <th style="width:8%">Качество</th>
-        <th style="width:24%">Комментарий</th>
-        <th style="width:7%">Цена</th>
-        <th style="width:7%">Кол-во</th>
-        <th style="width:11%">N контакта</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for detail_all in object_list %}
-            <tr>
-              <td>{{detail_all.user_model}}</td>
-              <td>{{detail_all.user_model_1}}</td>
-              <td>{{detail_all.user_detail}}</td>
-              <td>{{detail_all.detail_quality}}</td>
-              <td>{{detail_all.detail_comment}}</td>
-              <td>{{detail_all.detail_price}}</td>
-              <td>{{detail_all.detail_quantity}}</td>
-              <td>{{detail_all.owner_id}}</td>
-            </tr>
-    {% endfor %}
-
-     </tbody>
- </table>
- {%else%}
+    <table class="table table-striped table-bordered table-condensed table-hover">
+      <thead>
+        <tr class="info">
+          <th colspan="2">Модель телефона</th>
+          <th style="width:16%">Деталь</th>
+          <th style="width:8%">Качество</th>
+          <th style="width:24%">Комментарий</th>
+          <th style="width:7%">Цена</th>
+          <th style="width:7%">Кол-во</th>
+          <th style="width:11%">N контакта</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for detail_all in object_list %}
+          <tr>
+            <td>{{detail_all.user_model}}</td>
+            <td>{{detail_all.user_model_1}}</td>
+            <td>{{detail_all.user_detail}}</td>
+            <td>{{detail_all.detail_quality}}</td>
+            <td>{{detail_all.detail_comment}}</td>
+            <td>{{detail_all.detail_price}}</td>
+            <td>{{detail_all.detail_quantity}}</td>
+            <td>{{detail_all.owner_id}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {%else%}
     <p><h2>The list is empty</h2></p>
   {%endif%}
-
 {% endblock content %}
 

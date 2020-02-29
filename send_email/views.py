@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from mobile.models import Mobil
 
+@login_required
 def index(request,mobil_id,message_id):
     message_send = Post.objects.filter(owner=request.user).get(id=message_id)
     mobil_send = Mobil.objects.filter(owner=request.user).get(id=mobil_id)
@@ -33,6 +34,7 @@ def index(request,mobil_id,message_id):
     context={'b':b,'mobil_id': mobil_id, 'message_id': message_id,'form':form}
     return render(request, 'send_email/index.html',context)
 
+@login_required
 def success(request):
     email = request.POST.get('email', '')
     f=open('send_email/letter.txt','r')
@@ -47,7 +49,7 @@ def success(request):
     f.close()
     return render(request, 'send_email/success.html')
 
-
+@login_required
 def settings_common(request):
     set_1 = Settings_common.objects.filter(owner=request.user).first()
     if set_1:
@@ -74,6 +76,7 @@ def settings_common(request):
         context = {'form': form}
         return render(request, 'send_email/settings_common.html', context)
 
+@login_required
 def messages_new_record(request):
     if request.method != 'POST':
         form = PostForm()
@@ -87,11 +90,13 @@ def messages_new_record(request):
     context = {'form': form}
     return render(request, 'send_email/messages_new_record.html', context)
 
+@login_required
 def messages(request):
     messages = Post.objects.filter(owner=request.user).order_by('post_message','text_message')
     context = {'messages': messages}
     return render(request, 'send_email/messages.html', context)
 
+@login_required
 def messages_mobil(request,mobil_id):
     messages = Post.objects.filter(owner=request.user).order_by('post_message','text_message')
     context = {'messages': messages,'mobil_id':mobil_id}
@@ -99,6 +104,7 @@ def messages_mobil(request,mobil_id):
     print(mobil_id)
     return render(request, 'send_email/messages.html', context)
 
+@login_required
 def messages_edit(request,message_id):
     message = Post.objects.filter(owner=request.user).get(id=message_id)
     if request.method != 'POST':
@@ -111,6 +117,7 @@ def messages_edit(request,message_id):
     context = {'form': form, 'message': message}
     return render(request, 'send_email/messages_edit.html', context)
 
+@login_required
 def messages_delete(request, message_id):
     message = Post.objects.filter(owner=request.user).get(id=message_id)
     if request.method != 'POST':
@@ -121,6 +128,7 @@ def messages_delete(request, message_id):
     context = {'form': form, 'message': message}
     return render(request, 'send_email/messages_delete.html', context)
 
+@login_required
 def messages_search(request):
     query = request.GET.get('q')
     if query:
@@ -132,7 +140,20 @@ def messages_search(request):
         context = {'object_list': []}
     return render(request, 'send_email/messages_search.html', context)
 
+@login_required
 def send_messages_all(request):
     send_messages_all = Send_message.objects.filter(owner=request.user).order_by('-id')
     context = {'send_messages_all': send_messages_all}
     return render(request, 'send_email/send_messages_all.html', context)
+
+@login_required
+def send_messages_all_search(request):
+    query = request.GET.get('q')
+    if query:
+        eto_s = Send_message.objects.filter(owner=request.user).order_by('-id')
+        object_list = eto_s.filter(
+            Q(send_message_email__icontains=query) | Q(send_message_number_tel__icontains=query))
+        context = {'object_list': object_list}
+    else:
+        context = {'object_list': []}
+    return render(request, 'send_email/send_messages_all_search.html', context)

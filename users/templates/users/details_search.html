@@ -1,8 +1,8 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-<h2>Details</h2>
-<h4>search</h4>
+  <h2>Details</h2>
+  <h4>search</h4>
 {% endblock header %}
 {% block content %}
   {%if object_list %}
@@ -39,10 +39,9 @@
     <p><h2>The list is empty</h2></p>
   {%endif%}
     <div class="row">
-            <div class="col-sm-offset-11 ">
-              <a href="{% url 'users:details' %}" class="btn btn-danger" >
-                 cancel</a>
-            </div>
+      <div class="col-sm-offset-11 ">
+        <a href="{% url 'users:details' %}" class="btn btn-danger" >
+          cancel</a>
+      </div>
     </div>
-
 {% endblock content %}

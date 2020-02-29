@@ -1,21 +1,11 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-
   <h2>Details order</h2><h4>new record</h4>
-
 {% endblock header %}
 {% block content %}
   <form action="{% url 'users:details_order_new_record' %}" method='post'  class="form" autocomplete="off">
     {% csrf_token %}
-<!-- <style>
-h2,h4,
-.form-control,.control-label{
-color: red;
-font-family: "Times New Roman", Georgia, Serif;
-line-height: 1.3em;
-}
-</style>  -->
       <div class="row">
         <div class="col-xs-12 col-sm-2">
           {% bootstrap_field form.user_model %}
@@ -47,13 +37,13 @@ line-height: 1.3em;
         </div>
       </div>
     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-9 ">
-            <button name="submit" class="btn btn-primary">add</button>
-            <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
+      <div class="row">
+        <div class="col-sm-offset-9 ">
+          <button name="submit" class="btn btn-primary">add</button>
+          <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
 		    cancel</a>
-          </div>
         </div>
-      {% endbuttons %}
-    </form>
+      </div>
+    {% endbuttons %}
+  </form>
 {% endblock content %}

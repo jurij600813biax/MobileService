@@ -1,0 +1,41 @@
+{% extends "mobile/base_1.html" %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2>Send messages all</h2>
+  <h4>search</h4>
+{% endblock header %}
+{% block content %}
+  {%if object_list %}
+    <table class="table table-striped table-bordered table-condensed table-hover">
+      <thead>
+        <tr class="info">
+          <th style="width:4%">Стикер</th>
+          <th style="width:20%">Эл.почта</th>
+          <th style="width:12%">N телефона</th>
+          <th>Текст сообщения</th>
+          <th style="width:21%">Выслано</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for send_message_all in object_list %}
+          <tr>
+            <td>{{send_message_all.send_message_sticker}}</td>
+            <td>{{send_message_all.send_message_email}}</td>
+            <td>{{send_message_all.send_message_number_tel}}</td>
+            <td>{{send_message_all.send_message_text}}</td>
+            <td>{{send_message_all.send_message_date}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {%else%}
+    <p><h2>The list is empty</h2></p>
+  {%endif%}
+    <div class="row">
+      <div class="col-sm-offset-11 ">
+        <a href="{% url 'send_email:send_messages_all' %}" class="btn btn-danger" >
+          cancel</a>
+      </div>
+    </div>
+{% endblock content %}
+

@@ -7,22 +7,21 @@
   <form action="{% url 'users:handbook_edit' handbook.id %}" method='post'>
     {% csrf_token %}
       <div class="row">
-         <div class="col-xs-12 col-sm-4">
-           {% bootstrap_field form.handbook_model %}
-         </div>
-         <div class ="col-xs-12 col-sm-4">
-           {% bootstrap_field form.designation %}
-         </div>
+        <div class="col-xs-12 col-sm-4">
+          {% bootstrap_field form.handbook_model %}
+        </div>
+        <div class ="col-xs-12 col-sm-4">
+          {% bootstrap_field form.designation %}
+        </div>
       </div>
     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-10 ">
-            <button name="submit" class="btn btn-primary">save</button>
-            <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
+      <div class="row">
+        <div class="col-sm-offset-10 ">
+          <button name="submit" class="btn btn-primary">save</button>
+          <a href="{% url 'users:handbook' %}" class="btn btn-danger" >
 		    cancel</a>
-          </div>
         </div>
-      {% endbuttons %}
+      </div>
+    {% endbuttons %}
   </form>
-
 {% endblock content %}

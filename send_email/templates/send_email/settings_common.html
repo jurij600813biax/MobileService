@@ -8,41 +8,39 @@
     {% csrf_token %}
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-            {% bootstrap_field form.free_set %}
+          {% bootstrap_field form.free_set %}
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-            {% bootstrap_field form.message_send_start %}
+          {% bootstrap_field form.message_send_start %}
         </div>
         <div class ="col-xs-12 col-sm-4 col-sm-offset-1">
           {% bootstrap_field form.message_send_finish %}
         </div>
       </div>
       <div class="row">
-          <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-              {% bootstrap_field form.number_reg_letter %}
-          </div>
-          <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-              {% bootstrap_field form.number_reg_start %}
-          </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
+          {% bootstrap_field form.number_reg_letter %}
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
+          {% bootstrap_field form.number_reg_start %}
+        </div>
       </div>
       <div class="row">
-         <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-              {% bootstrap_field form.details_visible %}
-          </div>
-          <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-              {% bootstrap_field form.contact_number %}
-          </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
+          {% bootstrap_field form.details_visible %}
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
+          {% bootstrap_field form.contact_number %}
+        </div>
       </div>
       {% buttons %}
-       <div class="row">
+        <div class="row">
           <div class="col-sm-offset-9 ">
             <button name="submit" class="btn btn-primary">save</button>
-<!--            <a href="{% url 'users:details' %}" class="btn btn-danger" >
-		    cancel</a>  -->
           </div>
         </div>
       {% endbuttons %}
-    </form>
+  </form>
 {% endblock content %}

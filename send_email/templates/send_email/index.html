@@ -4,56 +4,56 @@
   <h2>Send message</h2><h4>{{user.username}}</h4>
 {% endblock header %}
 {% block content %}
-<form action="{% url 'send_email:index' mobil_id message_id %}" method='post'>
+  <form action="{% url 'send_email:index' mobil_id message_id %}" method='post'>
     {% csrf_token %}
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-          <h4>Номер регистрации</h4>
+        <h4>Номер регистрации</h4>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-2 ">
-          <h4>{{ b.send_message_sticker }}</h4>
+        <h4>{{ b.send_message_sticker }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-          <h4>Номер телефона</h4>
+        <h4>Номер телефона</h4>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-2 ">
-          <h4>{{ b.send_message_number_tel }}</h4>
+        <h4>{{ b.send_message_number_tel }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-          <h4>Эл. почта</h4>
+        <h4>Эл. почта</h4>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-2 ">
-          <h4>{{ b.send_message_email }}</h4>
+        <h4>{{ b.send_message_email }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-          <h4>Цена ремонта</h4>
+        <h4>Цена ремонта</h4>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-2 ">
-          <h4>{{ b.send_message_price }}</h4>
+        <h4>{{ b.send_message_price }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-1 ">
-          <h4>Сообщение</h4>
+        <h4>Сообщение</h4>
       </div>
       <div class="col-xs-12 col-sm-5 col-sm-offset-2 ">
-          {% bootstrap_field form.send_message_text %}
+        {% bootstrap_field form.send_message_text %}
       </div>
     </div>
     {% buttons %}
-       <div class="row">
-          <div class="col-sm-offset-11 ">
-            <button name="submit" class="btn btn-primary">send </button>
-          </div>
+      <div class="row">
+        <div class="col-sm-offset-11 ">
+          <button name="submit" class="btn btn-primary">send </button>
         </div>
-      {% endbuttons %}
-    </form>
+      </div>
+    {% endbuttons %}
+  </form>
 {% endblock content %}
 
 

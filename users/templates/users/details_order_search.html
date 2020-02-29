@@ -1,8 +1,8 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-<h2>Details order</h2>
-<h4>search</h4>
+  <h2>Details order</h2>
+  <h4>search</h4>
 {% endblock header %}
 {% block content %}
   {%if object_list %}
@@ -35,16 +35,15 @@
             <td><a href="{% url 'users:details_order_delete' detail_order.id%}" class="btn btn-danger btn-xs">delete</a></td>
           </tr>
         {% endfor %}
-       </tbody>
+      </tbody>
     </table>
   {%else%}
     <p><h2>The list is empty</h2></p>
   {%endif%}
     <div class="row">
-            <div class="col-sm-offset-11 ">
-              <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
-                 cancel</a>
-            </div>
+      <div class="col-sm-offset-11 ">
+        <a href="{% url 'users:details_order' %}" class="btn btn-danger" >
+          cancel</a>
+      </div>
     </div>
-
 {% endblock content %}
