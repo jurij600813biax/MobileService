@@ -5,7 +5,7 @@
 {% endblock header %}
 {% block content %}
   <div class="row">
-    <div class="col-sm-offset-7">
+    <div class="col-xs-12 col-sm-offset-7">
       <form action="{% url 'users:handbook_search' %}" method="get" autocomplete="off" >
         <input name="q" type="text" placeholder="Search...">
         <button type="submit" class="btn btn-success btn-sm">search</button>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-xs-12 col-sm-8">
       <h3></h3>
     </div>
   </div>

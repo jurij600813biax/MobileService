@@ -1,7 +1,7 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Send message</h2><h4>{{user.username}}</h4>
+  <h2>Messages</h2><h4>send</h4>
 {% endblock header %}
 {% block content %}
   <form action="{% url 'send_email:index' mobil_id message_id %}" method='post'>

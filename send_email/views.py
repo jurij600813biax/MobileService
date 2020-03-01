@@ -15,8 +15,6 @@ def index(request,mobil_id,message_id):
     message_send = Post.objects.filter(owner=request.user).get(id=message_id)
     mobil_send = Mobil.objects.filter(owner=request.user).get(id=mobil_id)
     set_1 = Settings_common.objects.filter(owner=request.user).first()
-#    set_2 = Send_message.objects.filter(owner=request.user)
-#    send_mail('test',message_send.text_message,"Jurij",[mobil_send.email_client])
     c= Send_message(send_message_start = set_1.message_send_start,send_message_finish = set_1.message_send_finish,
                     send_message_text = message_send.text_message,send_message_email = mobil_send.email_client,
                     send_message_number_tel = mobil_send.number_tel,send_message_sticker = mobil_send.number_sticker,
@@ -29,8 +27,11 @@ def index(request,mobil_id,message_id):
         form = Send_messageForm(instance=c, data=request.POST)
         if form.is_valid():
             form.save()
+        if c.send_message_email:
+            if c.send_message_email != '*@gmail.com':
+                send_mail('service',c.send_message_text,"Jurij", [mobil_send.email_client])
         return HttpResponseRedirect(reverse('send_email:send_messages_all'))
-#    bs = Send_message.objects.filter(owner=request.user)
+
     context={'b':b,'mobil_id': mobil_id, 'message_id': message_id,'form':form}
     return render(request, 'send_email/index.html',context)
 

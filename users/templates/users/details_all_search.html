@@ -1,24 +1,24 @@
 {% extends "mobile/base_1.html" %}
 {% load bootstrap3 %}
 {% block header %}
-  <h2>Details all search</h2><h4>{{user.username}}</h4>
+  <h2>Details all</h2><h4>search</h4>
 {% endblock header %}
 {% block content %}
   {%if object_list %}
     <table>
       {% for key, value in set_3.items %}
         <div class="row">
-          <div class="col-sm-1">
+          <div class="col-xs-12 col-sm-1">
             {{ key }}
           </div>
-          <div class="col-sm-2">
+          <div class="col-xs-12 col-sm-2">
             {{ value }}
           </div>
         </div>
       {% endfor %}
     </table>
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-xs-12 col-sm-8">
           <h3></h3>
         </div>
       </div>
